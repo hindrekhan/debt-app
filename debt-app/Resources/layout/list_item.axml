@@ -22,5 +22,12 @@
 			android:layout_height="wrap_content"
 			android:layout_toRightOf="@id/img_picture"
 			android:id="@+id/txt_name" />
+		<TextView
+			android:text="debt"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/txt_name"
+			android:id="@+id/debt" />
 	</RelativeLayout>
 </LinearLayout>

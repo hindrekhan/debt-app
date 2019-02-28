@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace AndroidPager
+namespace debt_app
 {
     public class GenericViewPagerFragment:Android.Support.V4.App.Fragment
     {
