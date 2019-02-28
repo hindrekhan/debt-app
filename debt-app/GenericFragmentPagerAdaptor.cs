@@ -12,7 +12,7 @@ using Android.Widget;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
 
-namespace AndroidPager
+namespace debt_app
 {
     public class GenericFragmentPagerAdaptor:FragmentPagerAdapter
     {
