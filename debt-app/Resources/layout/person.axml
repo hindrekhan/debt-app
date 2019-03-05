@@ -9,7 +9,7 @@
 		android:layout_height="200px"
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:id="@+id/textInputEditText1" />
+		android:id="@+id/prices" />
 	<LinearLayout
 		android:orientation="horizontal"
 		android:minWidth="25px"
@@ -27,6 +27,12 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:id="@+id/sendBill" />
+		<TextView
+			android:text=""
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:id="@+id/finalPrice" />
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
