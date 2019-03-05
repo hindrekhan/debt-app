@@ -28,6 +28,15 @@ namespace AndroidPager
             var pager = FindViewById<ViewPager>(Resource.Id.pager);
             var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
             adaptor.AddFragmentView((i, v, b) => {
+                var view = i.Inflate(Resource.Layout.person, v, false);
+
+                //var listView = view.FindViewById<ListView>(Resource.Id.listView);
+                //listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+
+                return view;
+            });
+
+            adaptor.AddFragmentView((i, v, b) => {
                 var view = i.Inflate(Resource.Layout.listview_layout, v,false);
 
                 var listView = view.FindViewById<ListView>(Resource.Id.listView);
@@ -46,6 +55,7 @@ namespace AndroidPager
             pager.Adapter = adaptor;
             pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
 
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Asdf"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
         }

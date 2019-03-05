@@ -2227,26 +2227,26 @@ namespace debt_app
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02006e
-			public const int avd_hide_password_1 = 2130837614;
+			// aapt resource value: 0x7f020074
+			public const int avd_hide_password_1 = 2130837620;
 			
-			// aapt resource value: 0x7f02006f
-			public const int avd_hide_password_2 = 2130837615;
+			// aapt resource value: 0x7f020075
+			public const int avd_hide_password_2 = 2130837621;
 			
-			// aapt resource value: 0x7f020070
-			public const int avd_hide_password_3 = 2130837616;
+			// aapt resource value: 0x7f020076
+			public const int avd_hide_password_3 = 2130837622;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020071
-			public const int avd_show_password_1 = 2130837617;
+			// aapt resource value: 0x7f020077
+			public const int avd_show_password_1 = 2130837623;
 			
-			// aapt resource value: 0x7f020072
-			public const int avd_show_password_2 = 2130837618;
+			// aapt resource value: 0x7f020078
+			public const int avd_show_password_2 = 2130837624;
 			
-			// aapt resource value: 0x7f020073
-			public const int avd_show_password_3 = 2130837619;
+			// aapt resource value: 0x7f020079
+			public const int avd_show_password_3 = 2130837625;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2273,55 +2273,73 @@ namespace debt_app
 			public const int Icon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int Jake = 2130837597;
+			public const int item1 = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int Logan = 2130837598;
+			public const int item2 = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int navigation_empty_icon = 2130837599;
+			public const int item3 = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_action_background = 2130837600;
+			public const int item4 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg = 2130837601;
+			public const int item5 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_low = 2130837602;
+			public const int item6 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg_low_normal = 2130837603;
+			public const int Jake = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_low_pressed = 2130837604;
+			public const int Logan = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg_normal = 2130837605;
+			public const int navigation_empty_icon = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_bg_normal_pressed = 2130837606;
+			public const int notification_action_background = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_icon_background = 2130837607;
-			
-			// aapt resource value: 0x7f02006c
-			public const int notification_template_icon_bg = 2130837612;
-			
-			// aapt resource value: 0x7f02006d
-			public const int notification_template_icon_low_bg = 2130837613;
+			public const int notification_bg = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_tile_bg = 2130837608;
+			public const int notification_bg_low = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notify_panel_notification_icon_bg = 2130837609;
+			public const int notification_bg_low_normal = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int tooltip_frame_dark = 2130837610;
+			public const int notification_bg_low_pressed = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int tooltip_frame_light = 2130837611;
+			public const int notification_bg_normal = 2130837611;
+			
+			// aapt resource value: 0x7f02006c
+			public const int notification_bg_normal_pressed = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int notification_icon_background = 2130837613;
+			
+			// aapt resource value: 0x7f020072
+			public const int notification_template_icon_bg = 2130837618;
+			
+			// aapt resource value: 0x7f020073
+			public const int notification_template_icon_low_bg = 2130837619;
+			
+			// aapt resource value: 0x7f02006e
+			public const int notification_tile_bg = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int notify_panel_notification_icon_bg = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int tooltip_frame_dark = 2130837616;
+			
+			// aapt resource value: 0x7f020071
+			public const int tooltip_frame_light = 2130837617;
 			
 			static Drawable()
 			{
@@ -2495,6 +2513,9 @@ namespace debt_app
 			// aapt resource value: 0x7f080060
 			public const int default_activity_button = 2131230816;
 			
+			// aapt resource value: 0x7f0800b5
+			public const int deleteButton = 2131230901;
+			
 			// aapt resource value: 0x7f080090
 			public const int design_bottom_sheet = 2131230864;
 			
@@ -2515,6 +2536,9 @@ namespace debt_app
 			
 			// aapt resource value: 0x7f08007e
 			public const int edit_query = 2131230846;
+			
+			// aapt resource value: 0x7f0800ba
+			public const int email = 2131230906;
 			
 			// aapt resource value: 0x7f080030
 			public const int end = 2131230768;
@@ -2573,6 +2597,9 @@ namespace debt_app
 			// aapt resource value: 0x7f08005f
 			public const int image = 2131230815;
 			
+			// aapt resource value: 0x7f0800b9
+			public const int imageView1 = 2131230905;
+			
 			// aapt resource value: 0x7f08009b
 			public const int img_picture = 2131230875;
 			
@@ -2581,6 +2608,24 @@ namespace debt_app
 			
 			// aapt resource value: 0x7f080059
 			public const int italic = 2131230809;
+			
+			// aapt resource value: 0x7f0800bc
+			public const int item1 = 2131230908;
+			
+			// aapt resource value: 0x7f0800bd
+			public const int item2 = 2131230909;
+			
+			// aapt resource value: 0x7f0800be
+			public const int item3 = 2131230910;
+			
+			// aapt resource value: 0x7f0800c0
+			public const int item4 = 2131230912;
+			
+			// aapt resource value: 0x7f0800c1
+			public const int item5 = 2131230913;
+			
+			// aapt resource value: 0x7f0800c2
+			public const int item6 = 2131230914;
 			
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
@@ -2597,6 +2642,18 @@ namespace debt_app
 			// aapt resource value: 0x7f080018
 			public const int line3 = 2131230744;
 			
+			// aapt resource value: 0x7f0800b4
+			public const int linearLayout1 = 2131230900;
+			
+			// aapt resource value: 0x7f0800b7
+			public const int linearLayout2 = 2131230903;
+			
+			// aapt resource value: 0x7f0800bb
+			public const int linearLayout3 = 2131230907;
+			
+			// aapt resource value: 0x7f0800bf
+			public const int linearLayout4 = 2131230911;
+			
 			// aapt resource value: 0x7f08001d
 			public const int listMode = 2131230749;
 			
@@ -2606,14 +2663,14 @@ namespace debt_app
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int masked = 2131230901;
+			// aapt resource value: 0x7f0800c5
+			public const int masked = 2131230917;
 			
 			// aapt resource value: 0x7f0800a6
 			public const int media_actions = 2131230886;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int message = 2131230899;
+			// aapt resource value: 0x7f0800c3
+			public const int message = 2131230915;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2623,6 +2680,9 @@ namespace debt_app
 			
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
+			
+			// aapt resource value: 0x7f0800b8
+			public const int name = 2131230904;
 			
 			// aapt resource value: 0x7f080093
 			public const int navigation_header_container = 2131230867;
@@ -2741,6 +2801,9 @@ namespace debt_app
 			// aapt resource value: 0x7f08008a
 			public const int select_dialog_listview = 2131230858;
 			
+			// aapt resource value: 0x7f0800b6
+			public const int sendBill = 2131230902;
+			
 			// aapt resource value: 0x7f080074
 			public const int shortcut = 2131230836;
 			
@@ -2803,6 +2866,9 @@ namespace debt_app
 			
 			// aapt resource value: 0x7f08001b
 			public const int text2 = 2131230747;
+			
+			// aapt resource value: 0x7f0800b3
+			public const int textInputEditText1 = 2131230899;
 			
 			// aapt resource value: 0x7f08006a
 			public const int textSpacerNoButtons = 2131230826;
@@ -2873,8 +2939,8 @@ namespace debt_app
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int visible = 2131230900;
+			// aapt resource value: 0x7f0800c4
+			public const int visible = 2131230916;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -3116,19 +3182,22 @@ namespace debt_app
 			public const int notification_template_part_time = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_item_material = 2130968635;
+			public const int person = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int select_dialog_multichoice_material = 2130968636;
+			public const int select_dialog_item_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int select_dialog_singlechoice_material = 2130968637;
+			public const int select_dialog_multichoice_material = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int support_simple_spinner_dropdown_item = 2130968638;
+			public const int select_dialog_singlechoice_material = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int tooltip = 2130968639;
+			public const int support_simple_spinner_dropdown_item = 2130968639;
+			
+			// aapt resource value: 0x7f040040
+			public const int tooltip = 2130968640;
 			
 			static Layout()
 			{
