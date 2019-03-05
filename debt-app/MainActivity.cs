@@ -5,6 +5,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.View;
 using debt_app;
 using Android.Content;
+using System.Collections.Generic;
 
 namespace AndroidPager
 {
@@ -14,6 +15,7 @@ namespace AndroidPager
         int count = 1;
         EditText prices;
         TextView finalPrice;
+        List<string> items = new List<string>();
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -51,6 +53,7 @@ namespace AndroidPager
                 item6.Click += Item6_Click;
 
                 prices = view.FindViewById<EditText>(Resource.Id.prices);
+                finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
 
                 //var listView = view.FindViewById<ListView>(Resource.Id.listView);
                 //listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
@@ -86,48 +89,48 @@ namespace AndroidPager
 
         private void Item1_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "cucumber ";
+            items.Add("cucumber");
             update_text();
         }
 
         private void Item2_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "apple ";
+            items.Add("apple");
             update_text();
         }
 
         private void Item3_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "gum ";
+            items.Add("gum");
             update_text();
         }
 
         private void Item4_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "beer ";
+            items.Add("beer");
             update_text();
         }
 
         private void Item5_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "cigarettes ";
+            items.Add("cigarettes");
             update_text();
         }
 
         private void Item6_Click(object sender, System.EventArgs e)
         {
-            prices.Text += "vodka ";
+            items.Add("vodka");
             update_text();
         }
 
         private void update_text()
         {
-            var items = prices.Text.Split();
             var finalPrice = 0.0;
+
+            prices.Text = "";
             foreach (var item in items)
             {
-                if (item == "")
-                    continue;
+                prices.Text += item + " ";
 
                 switch(item)
                 {
@@ -150,18 +153,11 @@ namespace AndroidPager
                         finalPrice += 1.0;
                         break;
                     default:
-                        finalPrice = -2.0;
                         break;
-                }
-
-                if (finalPrice == -2.0)
-                {
-                    prices.Text = "Error";
-                    break;
                 }
             }
 
-            prices.Text = finalPrice.ToString();
+            this.finalPrice.Text = finalPrice.ToString();
         }
     }
 }
