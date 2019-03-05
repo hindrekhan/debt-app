@@ -16,6 +16,7 @@ namespace AndroidPager
         EditText prices;
         TextView finalPrice;
         List<string> items = new List<string>();
+        ViewPager pager;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -29,8 +30,9 @@ namespace AndroidPager
             dbService.CreateTableWithData();
 
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            var pager = FindViewById<ViewPager>(Resource.Id.pager);
+            pager = FindViewById<ViewPager>(Resource.Id.pager);
             var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
+
             adaptor.AddFragmentView((i, v, b) => {
                 var view = i.Inflate(Resource.Layout.person, v, false);
 
@@ -64,10 +66,11 @@ namespace AndroidPager
             adaptor.AddFragmentView((i, v, b) => {
                 var view = i.Inflate(Resource.Layout.listview_layout, v,false);
 
+                var newButton = view.FindViewById<ImageView>(Resource.Id.newButton);
+                newButton.Click += NewButton_Click;
+
                 var listView = view.FindViewById<ListView>(Resource.Id.listView);
                 listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-
-                
 
                 return view;
             });
@@ -85,6 +88,11 @@ namespace AndroidPager
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Asdf"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
+        }
+
+        private void NewButton_Click(object sender, System.EventArgs e)
+        {
+            pager.SetCurrentItem(0, true);
         }
 
         private void Item1_Click(object sender, System.EventArgs e)
