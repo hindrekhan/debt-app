@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<TextView
+		android:text="Your email"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="28.0dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/textView1"
+		android:layout_margin="20"/>
+	<android.support.design.widget.TextInputEditText
+		android:text="email"
+		android:layout_width="match_parent"
+		android:layout_height="34.5dp"
+		android:id="@+id/textInputEditText1"
+		android:layout_margin="20"/>
+	<TextView
+		android:text="billing number"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView2"
+		android:layout_margin="20" />
+	<android.support.design.widget.TextInputEditText
+		android:text="EE63526356258888"
+		android:layout_width="match_parent"
+		android:layout_height="30.5dp"
+		android:id="@+id/textInputEditText2"
+		android:layout_margin="20" />
+	<TextView
+		android:text="Message"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView3"
+		android:layout_margin="20" />
+	<android.support.design.widget.TextInputEditText
+		android:text="	Write your message here"
+		android:layout_width="match_parent"
+		android:layout_height="282.0dp"
+		android:id="@+id/textInputEditText3"
+		android:layout_margin="20" />
 
 </LinearLayout>
