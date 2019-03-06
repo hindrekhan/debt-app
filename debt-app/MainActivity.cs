@@ -6,10 +6,11 @@ using Android.Support.V4.View;
 using Android.Content;
 using System.Collections.Generic;
 using Android.Views;
+using Xamarin.Android.Net;
 
 namespace debt_app
 {
-    [Activity(Label = "AndroidPager", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
     {
         int count = 1;
@@ -27,6 +28,8 @@ namespace debt_app
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            Xamarin.Forms.Forms.Init(this, bundle);
 
             dbService = new DatabaseService();
             dbService.CreateDatabase();
@@ -67,6 +70,9 @@ namespace debt_app
                 var save = view.FindViewById<Button>(Resource.Id.save);
                 save.Click += Save_Click;
 
+                var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
+                sendBill.Click += SendBill_Click;
+
                 return view;
             });
 
@@ -96,6 +102,11 @@ namespace debt_app
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Settings"));
             pager.SetCurrentItem(1, true);
+        }
+
+        private void SendBill_Click(object sender, System.EventArgs e)
+        {
+            Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:ryan.hatfield@test.com"));
         }
 
         public void UpdatePerson()
