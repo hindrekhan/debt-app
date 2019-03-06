@@ -10,7 +10,7 @@ using Xamarin.Android.Net;
 
 namespace debt_app
 {
-    [Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
     {
         int count = 1;
@@ -41,41 +41,41 @@ namespace debt_app
 
             adaptor.AddFragmentView((i, v, b) =>
             {
-                var view = i.Inflate(Resource.Layout.person, v, false);
+                var view = i.Inflate(Resource.Layout.add_debt, v, false);
                 firstView = view;
 
-                var item1 = view.FindViewById<ImageView>(Resource.Id.item1);
-                item1.Click += Item1_Click;
+                //var item1 = view.FindViewById<ImageView>(Resource.Id.item1);
+                //item1.Click += Item1_Click;
 
-                var item2 = view.FindViewById<ImageView>(Resource.Id.item2);
-                item2.Click += Item2_Click;
+                //var item2 = view.FindViewById<ImageView>(Resource.Id.item2);
+                //item2.Click += Item2_Click;
 
-                var item3 = view.FindViewById<ImageView>(Resource.Id.item3);
-                item3.Click += Item3_Click;
+                //var item3 = view.FindViewById<ImageView>(Resource.Id.item3);
+                //item3.Click += Item3_Click;
 
-                var item4 = view.FindViewById<ImageView>(Resource.Id.item4);
-                item4.Click += Item4_Click;
+                //var item4 = view.FindViewById<ImageView>(Resource.Id.item4);
+                //item4.Click += Item4_Click;
 
-                var item5 = view.FindViewById<ImageView>(Resource.Id.item5);
-                item5.Click += Item5_Click;
+                //var item5 = view.FindViewById<ImageView>(Resource.Id.item5);
+                //item5.Click += Item5_Click;
 
-                var item6 = view.FindViewById<ImageView>(Resource.Id.item6);
-                item6.Click += Item6_Click;
+                //var item6 = view.FindViewById<ImageView>(Resource.Id.item6);
+                //item6.Click += Item6_Click;
 
-                prices = view.FindViewById<EditText>(Resource.Id.prices);
-                finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
+                //prices = view.FindViewById<EditText>(Resource.Id.prices);
+                //finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
 
-                var clear = view.FindViewById<Button>(Resource.Id.clear);
-                clear.Click += Clear_Click;
+                //var clear = view.FindViewById<Button>(Resource.Id.clear);
+                //clear.Click += Clear_Click;
 
-                var save = view.FindViewById<Button>(Resource.Id.save);
-                save.Click += Save_Click;
+                //var save = view.FindViewById<Button>(Resource.Id.save);
+                //save.Click += Save_Click;
 
-                var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
-                sendBill.Click += SendBill_Click;
+                //var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
+                //sendBill.Click += SendBill_Click;
 
-                var delete = view.FindViewById<Button>(Resource.Id.deleteButton);
-                delete.Click += Delete_Click;
+                //var delete = view.FindViewById<Button>(Resource.Id.deleteButton);
+                //delete.Click += Delete_Click;
 
                 return view;
             });
@@ -84,9 +84,6 @@ namespace debt_app
             {
                 var view = i.Inflate(Resource.Layout.listview_layout, v, false);
                 secondView = view;
-
-                var newButton = view.FindViewById<ImageView>(Resource.Id.newButton);
-                newButton.Click += NewButton_Click;
 
                 var listView = view.FindViewById<ListView>(Resource.Id.listView);
                 listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
@@ -97,8 +94,8 @@ namespace debt_app
             pager.Adapter = adaptor;
             pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
 
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
             pager.SetCurrentItem(1, true);
         }
 
@@ -151,11 +148,6 @@ namespace debt_app
         {
             curPerson.Items = "";
             update_text();
-        }
-
-        private void NewButton_Click(object sender, System.EventArgs e)
-        {
-            pager.SetCurrentItem(0, true);
         }
 
         private void Item1_Click(object sender, System.EventArgs e)

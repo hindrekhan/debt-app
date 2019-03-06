@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="#118504"
+		android:minWidth="25px"
+		android:minHeight="25px">
+		<Switch
+
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/switch1" />
+		<TextView
+			android:text="Their debt"
+			android:textAllCaps="true"
+			android:textSize="16dp"
+			android:textColor="@android:color/white"
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/switch1"
+			android:id="@+id/textView1" />
+	</RelativeLayout>
+</LinearLayout>

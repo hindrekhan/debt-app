@@ -6,11 +6,6 @@
 	android:layout_height="fill_parent"
 	android:minWidth="25px"
 	android:minHeight="25px">
-		<ImageView
-		android:src="@drawable/newbutton"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/newButton" />
 	<ListView
 		android:minWidth="25px"
 		android:minHeight="25px"
