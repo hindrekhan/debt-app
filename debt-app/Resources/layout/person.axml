@@ -3,13 +3,15 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:background="#ffe98b0d">
 	<android.support.design.widget.TextInputEditText
 		android:layout_width="match_parent"
 		android:layout_height="200px"
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:id="@+id/prices" />
+		android:id="@+id/prices"
+		android:background="#fffeaaaa" />
 	<TextView
 		android:text=""
 		android:textAppearance="?android:attr/textAppearanceLarge"
@@ -30,12 +32,16 @@
 			android:text="Delete"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:id="@+id/deleteButton" />
+			android:id="@+id/deleteButton"
+			android:background="#fff3a742"
+			android:layout_margin="12px" />
 		<Button
 			android:text="Send Bill"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:id="@+id/sendBill" />
+			android:id="@+id/sendBill"
+			android:background="#fff3a742"
+			android:layout_margin="12px" />
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
@@ -51,12 +57,16 @@
 			android:text="Clear"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:id="@+id/clear" />
+			android:id="@+id/clear"
+			android:background="#fff3a742"
+			android:layout_margin="12px" />
 		<Button
 			android:text="Save"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:id="@+id/save" />
+			android:id="@+id/save"
+			android:background="#fff3a742"
+			android:layout_margin="12px" />
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
