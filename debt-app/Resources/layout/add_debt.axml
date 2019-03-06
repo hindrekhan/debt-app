@@ -13,11 +13,10 @@
 		android:minWidth="25px"
 		android:minHeight="25px">
 		<Switch
-
 			android:layout_alignParentRight="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/switch1" />
+			android:id="@+id/switch_debt" />
 		<TextView
 			android:text="Their debt"
 			android:textAllCaps="true"
@@ -26,7 +25,55 @@
 			android:layout_alignParentRight="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@id/switch1"
-			android:id="@+id/textView1" />
+			android:layout_below="@id/switch_debt"
+			android:id="@+id/text_TheirDebt" />
 	</RelativeLayout>
+	<ViewSwitcher
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/viewSwitcher_contacts">
+		<LinearLayout
+			android:orientation="vertical"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/linearlayout_contacts">
+			<TextView
+				android:text="Choose a contact"
+				android:layout_margin="10dip"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/text_spinner" />
+			 <Spinner
+				android:id="@+id/spinner_contacts"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+		<LinearLayout
+				android:orientation="vertical"
+				android:minWidth="25px"
+				android:minHeight="25px"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/linearlayout_contacts_2">
+		<EditText
+			android:inputType="textPersonName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Enter name"
+			android:textSize="25sp"
+			android:id="@+id/editText_name" />
+		<EditText
+		android:inputType="textEmailAddress"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="Enter e-mail"
+		android:textSize="25sp"		
+		android:id="@+id/editText_mail" />
+		</LinearLayout>
+		</ViewSwitcher>
+	
 </LinearLayout>

@@ -15,47 +15,13 @@ namespace debt_app
 {
     public class Person
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
+        [MaxLength(70)]
         public string Name { get; set; }
-        public string Items { get; set; }
+        public double Debt { get; set; }
+        [MaxLength(89)]
         public string Email { get; set; }
 
-        public static double CalcDebt(string items)
-        {
-            var debt = 0.0;
-
-            if (items == null)
-                return 0.0;
-
-            foreach (var item in items.Split())
-            {
-                switch (item)
-                {
-                    case "cucumber":
-                        debt += 1.0;
-                        break;
-                    case "gum":
-                        debt += 1.0;
-                        break;
-                    case "beer":
-                        debt += 1.0;
-                        break;
-                    case "cigarettes":
-                        debt += 1.0;
-                        break;
-                    case "vodka":
-                        debt += 1.0;
-                        break;
-                    case "apple":
-                        debt += 1.0;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            return debt;
-        }
     }
 }

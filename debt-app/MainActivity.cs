@@ -7,13 +7,15 @@ using Android.Content;
 using System.Collections.Generic;
 using Android.Views;
 using Xamarin.Android.Net;
+using System.Linq;
+using System;
 
 namespace debt_app
 {
     [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
     {
-        int count = 1;
+        bool trigger = false;
         EditText prices;
         TextView finalPrice;
         ViewPager pager;
@@ -21,16 +23,14 @@ namespace debt_app
         public Person curPerson = new Person();
         public View firstView;
         public View secondView;
+        ViewSwitcher switcher;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
             Xamarin.Forms.Forms.Init(this, bundle);
-
             dbService = new DatabaseService();
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
@@ -38,50 +38,23 @@ namespace debt_app
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             pager = FindViewById<ViewPager>(Resource.Id.pager);
             var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
-
             adaptor.AddFragmentView((i, v, b) =>
             {
-                var view = i.Inflate(Resource.Layout.add_debt, v, false);
-                firstView = view;
+                var view = firstView = i.Inflate(Resource.Layout.add_debt, v, false);
 
-                //var item1 = view.FindViewById<ImageView>(Resource.Id.item1);
-                //item1.Click += Item1_Click;
+                switcher = view.FindViewById<ViewSwitcher>(Resource.Id.viewSwitcher_contacts);
+                var emailEdit = view.FindViewById<EditText>(Resource.Id.editText_mail);
+                emailEdit.FocusChange += new EventHandler<View.FocusChangeEventArgs>(emailEdit_FocusChange);
 
-                //var item2 = view.FindViewById<ImageView>(Resource.Id.item2);
-                //item2.Click += Item2_Click;
-
-                //var item3 = view.FindViewById<ImageView>(Resource.Id.item3);
-                //item3.Click += Item3_Click;
-
-                //var item4 = view.FindViewById<ImageView>(Resource.Id.item4);
-                //item4.Click += Item4_Click;
-
-                //var item5 = view.FindViewById<ImageView>(Resource.Id.item5);
-                //item5.Click += Item5_Click;
-
-                //var item6 = view.FindViewById<ImageView>(Resource.Id.item6);
-                //item6.Click += Item6_Click;
-
-                //prices = view.FindViewById<EditText>(Resource.Id.prices);
-                //finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
-
-                //var clear = view.FindViewById<Button>(Resource.Id.clear);
-                //clear.Click += Clear_Click;
-
-                //var save = view.FindViewById<Button>(Resource.Id.save);
-                //save.Click += Save_Click;
-
-                //var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
-                //sendBill.Click += SendBill_Click;
-
-                //var delete = view.FindViewById<Button>(Resource.Id.deleteButton);
-                //delete.Click += Delete_Click;
-
+            var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+                Fill_Spinner_Contacts(view, spinner);
+                spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
                 return view;
             });
 
             adaptor.AddFragmentView((i, v, b) =>
             {
+
                 var view = i.Inflate(Resource.Layout.listview_layout, v, false);
                 secondView = view;
 
@@ -97,6 +70,38 @@ namespace debt_app
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
             pager.SetCurrentItem(1, true);
+        }
+
+        public void Fill_Spinner_Contacts(View view, Spinner spinner)
+        {
+            DatabaseService dbService = new DatabaseService();
+            var people = dbService.GetAllPersons();
+            var contacts = from contact in people
+                           select contact.Name;
+            var contactNames = contacts.ToList();
+            contactNames.Add("<Create New Contact>");
+            var adapter = new ArrayAdapter<string>(this, Resource.Layout.spinner_item, contactNames);
+            spinner.Adapter = adapter;
+        }
+
+        private void emailEdit_FocusChange(object sender, EventArgs e)
+        {
+            Toast.MakeText(Application.Context, "Hello toast!", ToastLength.Short).Show();
+        }
+
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            if (trigger == true)
+            {
+                Spinner spinner = (Spinner)sender;
+                if (spinner.GetItemAtPosition(e.Position).ToString() == "<Create New Contact>")
+                {
+                    switcher.ShowNext();
+                }
+                //string toast = string.Format("The mean temperature for planet ",
+                //    spinner.GetItemAtPosition(e.Position));
+            }
+            trigger = true;
         }
 
         private void Delete_Click(object sender, System.EventArgs e)
@@ -125,7 +130,6 @@ namespace debt_app
             var name = view.FindViewById<EditText>(Resource.Id.name);
             name.Text = curPerson.Name;
 
-            prices.Text = curPerson.Items;
         }
 
         private void Save_Click(object sender, System.EventArgs e)
@@ -144,52 +148,6 @@ namespace debt_app
             pager.SetCurrentItem(1, true);
         }
 
-        private void Clear_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items = "";
-            update_text();
-        }
-
-        private void Item1_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "cucumber ";
-            update_text();
-        }
-
-        private void Item2_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "apple ";
-            update_text();
-        }
-
-        private void Item3_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "gum ";
-            update_text();
-        }
-
-        private void Item4_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "beer ";
-            update_text();
-        }
-
-        private void Item5_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "cigarettes ";
-            update_text();
-        }
-
-        private void Item6_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "vodka ";
-            update_text();
-        }
-
-        private void update_text()
-        {
-            finalPrice.Text = "Price: " + Person.CalcDebt(curPerson.Items).ToString();
-            prices.Text = curPerson.Items;
-        }
+        
     }
 }
