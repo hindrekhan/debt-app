@@ -3,11 +3,11 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
-using debt_app;
 using Android.Content;
 using System.Collections.Generic;
+using Android.Views;
 
-namespace AndroidPager
+namespace debt_app
 {
     [Activity(Label = "AndroidPager", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
@@ -17,6 +17,9 @@ namespace AndroidPager
         TextView finalPrice;
         List<string> items = new List<string>();
         ViewPager pager;
+        public DatabaseService dbService;
+        public Person curPerson = new Person();
+        public View firstView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -25,7 +28,7 @@ namespace AndroidPager
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            DatabaseService dbService = new DatabaseService();
+            dbService = new DatabaseService();
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
 
@@ -35,6 +38,7 @@ namespace AndroidPager
 
             adaptor.AddFragmentView((i, v, b) => {
                 var view = i.Inflate(Resource.Layout.person, v, false);
+                firstView = view;
 
                 var item1 = view.FindViewById<ImageView>(Resource.Id.item1);
                 item1.Click += Item1_Click;
@@ -57,8 +61,11 @@ namespace AndroidPager
                 prices = view.FindViewById<EditText>(Resource.Id.prices);
                 finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
 
-                //var listView = view.FindViewById<ListView>(Resource.Id.listView);
-                //listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+                var clear = view.FindViewById<Button>(Resource.Id.clear);
+                clear.Click += Clear_Click;
+
+                var save = view.FindViewById<Button>(Resource.Id.save);
+                save.Click += Save_Click;
 
                 return view;
             });
@@ -86,8 +93,29 @@ namespace AndroidPager
             pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
 
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Asdf"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Settings"));
+            pager.SetCurrentItem(1, true);
+        }
+
+        public void UpdatePerson()
+        {
+            var view = firstView;
+
+            var name = view.FindViewById<EditText>(Resource.Id.name);
+            name.Text = curPerson.Name;
+
+        }
+
+        private void Save_Click(object sender, System.EventArgs e)
+        {
+            dbService.UpdatePerson(curPerson);
+        }
+
+        private void Clear_Click(object sender, System.EventArgs e)
+        {
+            items = new List<string>();
+            update_text();
         }
 
         private void NewButton_Click(object sender, System.EventArgs e)
@@ -165,7 +193,7 @@ namespace AndroidPager
                 }
             }
 
-            this.finalPrice.Text = finalPrice.ToString();
+            this.finalPrice.Text = "Price: " + finalPrice.ToString();
         }
     }
 }

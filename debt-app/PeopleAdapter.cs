@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 
@@ -15,9 +16,9 @@ namespace debt_app
     class PeopleAdapter : BaseAdapter<Person>
     {
         List<Person> items;
-        Activity context;
+        MainActivity context;
 
-        public PeopleAdapter(Activity context, List<Person> items) : base()
+        public PeopleAdapter(MainActivity context, List<Person> items) : base()
         {
             this.context = context;
             this.items = items;
@@ -47,11 +48,29 @@ namespace debt_app
 
             var name = view.FindViewById<TextView>(Resource.Id.txt_name);
             var text = view.FindViewById<TextView>(Resource.Id.debt);
+            var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
 
             name.Text = items[position].Name;
             text.Text = items[position].Debt.ToString();
 
+            layout.Tag = position;
+            layout.Click += Layout_Click;
+
             return view;
+        }
+
+        private void Layout_Click(object sender, EventArgs e)
+        {
+            var layout = (RelativeLayout)sender;
+            var pos = (int)layout.Tag;
+            
+            var pager = context.FindViewById<ViewPager>(Resource.Id.pager);
+            var people = context.dbService.GetAllPersons();
+
+            context.curPerson = people[pos];
+            context.UpdatePerson();
+
+            pager.SetCurrentItem(0, true);
         }
     }
 }

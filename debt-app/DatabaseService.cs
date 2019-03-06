@@ -14,7 +14,7 @@ using SQLite;
 
 namespace debt_app
 {
-    class DatabaseService
+    public class DatabaseService
     {
         SQLiteConnection db;
 
