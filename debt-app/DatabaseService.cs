@@ -50,7 +50,7 @@ namespace debt_app
             {
                 var newPerson = new Person();
                 newPerson.Name = "jim";
-                newPerson.Debt = 1.0f;
+                newPerson.Items = "cucumber";
                 db.Insert(newPerson);
             }
         }
@@ -64,7 +64,10 @@ namespace debt_app
 
         public void RemovePerson(Person Person)
         {
-            db.Delete<Person>(Person);
+            if (Person.Id == 0)
+                return;
+
+            db.Delete<Person>(Person.Id);
         }
     }
 }

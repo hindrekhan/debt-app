@@ -10,6 +10,12 @@
 		android:minWidth="25px"
 		android:minHeight="25px"
 		android:id="@+id/prices" />
+	<TextView
+		android:text=""
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/finalPrice" />
 	<LinearLayout
 		android:orientation="horizontal"
 		android:minWidth="25px"
@@ -45,12 +51,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:id="@+id/save" />
-		<TextView
-			android:text=""
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:id="@+id/finalPrice" />
+
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
@@ -60,14 +61,9 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/linearLayout2">
 		<EditText
-			android:layout_width="207.0dp"
+			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:id="@+id/name" />
-		<ImageView
-			android:src="@android:drawable/ic_menu_gallery"
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:id="@+id/imageView1" />
 	</LinearLayout>
 	<android.support.design.widget.TextInputEditText
 		android:layout_width="match_parent"

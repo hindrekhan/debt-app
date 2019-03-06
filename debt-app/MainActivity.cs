@@ -16,11 +16,11 @@ namespace debt_app
         int count = 1;
         EditText prices;
         TextView finalPrice;
-        List<string> items = new List<string>();
         ViewPager pager;
         public DatabaseService dbService;
         public Person curPerson = new Person();
         public View firstView;
+        public View secondView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -74,12 +74,16 @@ namespace debt_app
                 var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
                 sendBill.Click += SendBill_Click;
 
+                var delete = view.FindViewById<Button>(Resource.Id.deleteButton);
+                delete.Click += Delete_Click;
+
                 return view;
             });
 
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.listview_layout, v, false);
+                secondView = view;
 
                 var newButton = view.FindViewById<ImageView>(Resource.Id.newButton);
                 newButton.Click += NewButton_Click;
@@ -98,6 +102,19 @@ namespace debt_app
             pager.SetCurrentItem(1, true);
         }
 
+        private void Delete_Click(object sender, System.EventArgs e)
+        {
+            dbService.RemovePerson(curPerson);
+            pager.SetCurrentItem(1, true);
+            UpdatePeople();
+        }
+
+        public void UpdatePeople()
+        {
+            var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
+            listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+        }
+
         private void SendBill_Click(object sender, System.EventArgs e)
         {
             Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:ryan.hatfield@test.com"));
@@ -114,12 +131,22 @@ namespace debt_app
 
         private void Save_Click(object sender, System.EventArgs e)
         {
-            dbService.UpdatePerson(curPerson);
+            var name = firstView.FindViewById<EditText>(Resource.Id.name);
+            curPerson.Name = name.Text;
+
+            if (curPerson.Id == 0)
+                dbService.AddPerson(curPerson);
+            else
+                dbService.UpdatePerson(curPerson);
+
+            curPerson = new Person();
+            UpdatePeople();
+            pager.SetCurrentItem(1, true);
         }
 
         private void Clear_Click(object sender, System.EventArgs e)
         {
-            items = new List<string>();
+            curPerson.Items = "";
             update_text();
         }
 
@@ -130,75 +157,44 @@ namespace debt_app
 
         private void Item1_Click(object sender, System.EventArgs e)
         {
-            items.Add("cucumber");
+            curPerson.Items += "cucumber ";
             update_text();
         }
 
         private void Item2_Click(object sender, System.EventArgs e)
         {
-            items.Add("apple");
+            curPerson.Items += "apple ";
             update_text();
         }
 
         private void Item3_Click(object sender, System.EventArgs e)
         {
-            items.Add("gum");
+            curPerson.Items += "gum ";
             update_text();
         }
 
         private void Item4_Click(object sender, System.EventArgs e)
         {
-            items.Add("beer");
+            curPerson.Items += "beer ";
             update_text();
         }
 
         private void Item5_Click(object sender, System.EventArgs e)
         {
-            items.Add("cigarettes");
+            curPerson.Items += "cigarettes ";
             update_text();
         }
 
         private void Item6_Click(object sender, System.EventArgs e)
         {
-            items.Add("vodka");
+            curPerson.Items += "vodka ";
             update_text();
         }
 
         private void update_text()
         {
-            var finalPrice = 0.0;
-
-            prices.Text = "";
-            foreach (var item in items)
-            {
-                prices.Text += item + " ";
-
-                switch (item)
-                {
-                    case "cucumber":
-                        finalPrice += 1.0;
-                        break;
-                    case "gum":
-                        finalPrice += 1.0;
-                        break;
-                    case "beer":
-                        finalPrice += 1.0;
-                        break;
-                    case "cigarettes":
-                        finalPrice += 1.0;
-                        break;
-                    case "vodka":
-                        finalPrice += 1.0;
-                        break;
-                    case "apple":
-                        finalPrice += 1.0;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            this.finalPrice.Text = "Price: " + finalPrice.ToString();
+            finalPrice.Text = "Price: " + Person.CalcDebt(curPerson.Items).ToString();
+            prices.Text = curPerson.Items;
         }
     }
 }

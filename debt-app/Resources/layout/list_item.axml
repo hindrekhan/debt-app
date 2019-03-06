@@ -11,23 +11,19 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/relativeLayout1">
-		<ImageView
-			android:src="@android:drawable/ic_menu_gallery"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/img_picture" />
 		<TextView
 			android:text="Text"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/img_picture"
-			android:id="@+id/txt_name" />
-		<TextView
-			android:text="debt"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:id="@+id/txt_name" />
+		<TextView
+			android:text="debt"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_toRightOf="@id/txt_name"
-			android:id="@+id/debt" />
+			android:id="@+id/debt"
+			android:layout_marginLeft="64px" />
 	</RelativeLayout>
 </LinearLayout>
