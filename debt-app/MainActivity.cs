@@ -9,6 +9,8 @@ using Android.Views;
 using Xamarin.Android.Net;
 using System.Linq;
 using System;
+using Android.Views.InputMethods;
+using Android.Hardware.Input;
 
 namespace debt_app
 {
@@ -45,8 +47,10 @@ namespace debt_app
                 switcher = view.FindViewById<ViewSwitcher>(Resource.Id.viewSwitcher_contacts);
                 var emailEdit = view.FindViewById<EditText>(Resource.Id.editText_mail);
                 emailEdit.FocusChange += new EventHandler<View.FocusChangeEventArgs>(emailEdit_FocusChange);
+                var numberEdit = view.FindViewById<EditText>(Resource.Id.editText_value);
+                numberEdit.EditorAction += HandleEditorAction;
 
-            var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+                var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
                 Fill_Spinner_Contacts(view, spinner);
                 spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
                 return view;
@@ -70,6 +74,18 @@ namespace debt_app
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
             pager.SetCurrentItem(1, true);
+        }
+
+        private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
+        {
+            e.Handled = false;
+            if (e.ActionId == ImeAction.Send)
+            {
+                InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
+
+                inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+                e.Handled = true;
+            }
         }
 
         public void Fill_Spinner_Contacts(View view, Spinner spinner)
