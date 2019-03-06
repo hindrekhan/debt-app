@@ -33,7 +33,7 @@
 		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/viewSwitcher_contacts">
+		android:id="@+id/viewSwitcher_contacts"/>
 		<LinearLayout
 			android:orientation="vertical"
 			android:minWidth="25px"
@@ -73,14 +73,52 @@
 		android:hint="Enter e-mail"
 		android:textSize="25sp"		
 		android:id="@+id/editText_mail" />
+		<Button
+			android:text="Add Contact"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/button_add_contact"
+			android:onClick="OnClick_Add_Contact" />
 		</LinearLayout>
-		</ViewSwitcher>
-	<EditText
-		android:inputType="number"
-		android:digits="0123456789."
+		
+	<RelativeLayout
+		android:minWidth="25px"
+		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:imeOptions="actionSend"
-		android:id="@+id/editText_value" />
-	
+		android:id="@+id/relativeLayout_debt"
+		android:visibility="invisible">
+		<EditText
+			android:inputType="number"
+			android:digits="0123456789."
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:imeOptions="actionSend"
+			android:gravity="left"
+			android:textSize="70sp"
+			android:id="@+id/editText_value" />
+		<Button
+			android:text="-0.5€"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="30sp"
+			android:layout_below="@id/editText_value"
+			android:id="@+id/button_decrease" />
+		<Button
+			android:text="+0.5€"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="30sp"
+			android:layout_below="@id/editText_value"
+			android:layout_toRightOf="@id/button_decrease"
+			android:id="@+id/button_increase" />
+		<Button
+			android:text="Send"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="40sp"
+			android:layout_below="@id/editText_value"
+			android:layout_alignParentRight="true"
+			android:id="@+id/button_finish" />
+	</RelativeLayout>
 </LinearLayout>
