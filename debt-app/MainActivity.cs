@@ -36,7 +36,8 @@ namespace debt_app
             pager = FindViewById<ViewPager>(Resource.Id.pager);
             var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 
-            adaptor.AddFragmentView((i, v, b) => {
+            adaptor.AddFragmentView((i, v, b) =>
+            {
                 var view = i.Inflate(Resource.Layout.person, v, false);
                 firstView = view;
 
@@ -70,8 +71,9 @@ namespace debt_app
                 return view;
             });
 
-            adaptor.AddFragmentView((i, v, b) => {
-                var view = i.Inflate(Resource.Layout.listview_layout, v,false);
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
 
                 var newButton = view.FindViewById<ImageView>(Resource.Id.newButton);
                 newButton.Click += NewButton_Click;
@@ -82,8 +84,9 @@ namespace debt_app
                 return view;
             });
 
-            adaptor.AddFragmentView((i, v, b) => {
-                var view = i.Inflate(Resource.Layout.layout1,v, false);
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+                var view = i.Inflate(Resource.Layout.layout1, v, false);
                 //var listView = view.FindViewById<ListView>(Resource.Id.listView);
                 //listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
                 return view;
@@ -168,7 +171,7 @@ namespace debt_app
             {
                 prices.Text += item + " ";
 
-                switch(item)
+                switch (item)
                 {
                     case "cucumber":
                         finalPrice += 1.0;
@@ -197,4 +200,3 @@ namespace debt_app
         }
     }
 }
-
