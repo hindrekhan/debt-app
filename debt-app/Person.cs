@@ -25,6 +25,9 @@ namespace debt_app
         {
             var debt = 0.0;
 
+            if (items == null)
+                return 0.0;
+
             foreach (var item in items.Split())
             {
                 switch (item)

@@ -107,6 +107,7 @@ namespace debt_app
             dbService.RemovePerson(curPerson);
             pager.SetCurrentItem(1, true);
             UpdatePeople();
+            UpdatePerson();
         }
 
         public void UpdatePeople()
@@ -127,6 +128,7 @@ namespace debt_app
             var name = view.FindViewById<EditText>(Resource.Id.name);
             name.Text = curPerson.Name;
 
+            prices.Text = curPerson.Items;
         }
 
         private void Save_Click(object sender, System.EventArgs e)
@@ -141,6 +143,7 @@ namespace debt_app
 
             curPerson = new Person();
             UpdatePeople();
+            UpdatePerson();
             pager.SetCurrentItem(1, true);
         }
 

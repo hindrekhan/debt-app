@@ -3249,9 +3249,6 @@ namespace debt_app
 			// aapt resource value: 0x7f09007e
 			public const int edit_query = 2131296382;
 			
-			// aapt resource value: 0x7f0900d6
-			public const int email = 2131296470;
-			
 			// aapt resource value: 0x7f090030
 			public const int end = 2131296304;
 			
@@ -3294,6 +3291,9 @@ namespace debt_app
 			// aapt resource value: 0x7f09000a
 			public const int ghost_view = 2131296266;
 			
+			// aapt resource value: 0x7f0900d6
+			public const int gridLayout1 = 2131296470;
+			
 			// aapt resource value: 0x7f090005
 			public const int home = 2131296261;
 			
@@ -3318,23 +3318,23 @@ namespace debt_app
 			// aapt resource value: 0x7f090059
 			public const int italic = 2131296345;
 			
+			// aapt resource value: 0x7f0900d7
+			public const int item1 = 2131296471;
+			
 			// aapt resource value: 0x7f0900d8
-			public const int item1 = 2131296472;
+			public const int item2 = 2131296472;
 			
 			// aapt resource value: 0x7f0900d9
-			public const int item2 = 2131296473;
+			public const int item3 = 2131296473;
 			
 			// aapt resource value: 0x7f0900da
-			public const int item3 = 2131296474;
+			public const int item4 = 2131296474;
+			
+			// aapt resource value: 0x7f0900db
+			public const int item5 = 2131296475;
 			
 			// aapt resource value: 0x7f0900dc
-			public const int item4 = 2131296476;
-			
-			// aapt resource value: 0x7f0900dd
-			public const int item5 = 2131296477;
-			
-			// aapt resource value: 0x7f0900de
-			public const int item6 = 2131296478;
+			public const int item6 = 2131296476;
 			
 			// aapt resource value: 0x7f090000
 			public const int item_touch_helper_previous_elevation = 2131296256;
@@ -3357,12 +3357,6 @@ namespace debt_app
 			// aapt resource value: 0x7f0900d4
 			public const int linearLayout2 = 2131296468;
 			
-			// aapt resource value: 0x7f0900d7
-			public const int linearLayout3 = 2131296471;
-			
-			// aapt resource value: 0x7f0900db
-			public const int linearLayout4 = 2131296475;
-			
 			// aapt resource value: 0x7f0900d1
 			public const int linearLayout5 = 2131296465;
 			
@@ -3375,14 +3369,14 @@ namespace debt_app
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900e1
-			public const int masked = 2131296481;
+			// aapt resource value: 0x7f0900df
+			public const int masked = 2131296479;
 			
 			// aapt resource value: 0x7f0900bf
 			public const int media_actions = 2131296447;
 			
-			// aapt resource value: 0x7f0900df
-			public const int message = 2131296479;
+			// aapt resource value: 0x7f0900dd
+			public const int message = 2131296477;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -3729,8 +3723,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900e0
-			public const int visible = 2131296480;
+			// aapt resource value: 0x7f0900de
+			public const int visible = 2131296478;
 			
 			// aapt resource value: 0x7f0900b1
 			public const int volume_item_container = 2131296433;
