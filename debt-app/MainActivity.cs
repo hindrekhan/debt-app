@@ -84,20 +84,11 @@ namespace debt_app
                 return view;
             });
 
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-                var view = i.Inflate(Resource.Layout.layout1, v, false);
-                //var listView = view.FindViewById<ListView>(Resource.Id.listView);
-                //listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-                return view;
-            });
-
             pager.Adapter = adaptor;
             pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
 
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Settings"));
             pager.SetCurrentItem(1, true);
         }
 
