@@ -36,62 +36,7 @@ namespace debt_app
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
 
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            pager = FindViewById<ViewPager>(Resource.Id.pager);
-            var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-                var view = firstView = i.Inflate(Resource.Layout.add_debt, v, false);
-
-                switcher = view.FindViewById<ViewSwitcher>(Resource.Id.viewSwitcher_contacts);
-
-                var emailEdit = view.FindViewById<EditText>(Resource.Id.editText_mail);
-                emailEdit.FocusChange += new EventHandler<View.FocusChangeEventArgs>(emailEdit_FocusChange);
-
-                var numberEdit = view.FindViewById<EditText>(Resource.Id.editText_value);
-                numberEdit.EditorAction += HandleEditorAction;
-
-                debtLayout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout_debt);
-
-                var add_contact = view.FindViewById<Button>(Resource.Id.button_add_contact);
-                add_contact.Click += delegate {
-                    var name = view.FindViewById<EditText>(Resource.Id.editText_name).Text;
-                    curPerson.Name = name;
-
-                    if (curPerson.Id == 0)
-                        dbService.AddPerson(curPerson);
-                    else
-                        dbService.UpdatePerson(curPerson);
-
-                    curPerson = new Person();
-                    UpdatePeople();
-                    UpdatePerson();
-                    pager.SetCurrentItem(1, true); };
-
-                var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
-                Fill_Spinner_Contacts(view, spinner);
-                spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-                return view;
-            });
-
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-
-                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
-                secondView = view;
-
-                var listView = view.FindViewById<ListView>(Resource.Id.listView);
-                listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-
-                return view;
-            });
-
-            pager.Adapter = adaptor;
-            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
-
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
-            pager.SetCurrentItem(1, true);
+            RefreshViews();
         }
 
         private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
@@ -125,8 +70,8 @@ namespace debt_app
 
         private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            if (trigger == true)
-            {
+            //if (trigger == true)
+            //{
                 Spinner spinner = (Spinner)sender;
                 if (spinner.GetItemAtPosition(e.Position).ToString() == "<Create New Contact>")
                 {
@@ -135,11 +80,12 @@ namespace debt_app
                 else
                 {
                     debtLayout.Visibility = ViewStates.Visible;
+                    var sendBill = FindViewById<Button>(Resource.Id.button_finish);
+                    sendBill.Click += SendBill_Click;
                 }
-                //string toast = string.Format("The mean temperature for planet ",
-                //    spinner.GetItemAtPosition(e.Position));
-            }
-            trigger = true;
+                
+            //}
+            //trigger = true;
         }
 
         private int GetIndex(Spinner spinner, String myString)
@@ -180,7 +126,9 @@ namespace debt_app
 
         private void SendBill_Click(object sender, System.EventArgs e)
         {
-            Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + curPerson.Name + "@mail.com"));
+            var numberEdit = FindViewById<EditText>(Resource.Id.editText_value);
+            Save_Click(sender, e);
+            //Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + curPerson.Email));
         }
 
         public void UpdatePerson()
@@ -188,25 +136,120 @@ namespace debt_app
             var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
             spinner.SetSelection(GetIndex(spinner, curPerson.Name));
 
+            
             //var name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
             //name.Text = curPerson.Name;
+        }
 
+        public void RefreshViews()
+        {
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            pager = FindViewById<ViewPager>(Resource.Id.pager);
+            var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+                var view = firstView = i.Inflate(Resource.Layout.add_debt, v, false);
+
+                switcher = view.FindViewById<ViewSwitcher>(Resource.Id.viewSwitcher_contacts);
+
+                var emailEdit = view.FindViewById<EditText>(Resource.Id.editText_mail);
+                emailEdit.FocusChange += new EventHandler<View.FocusChangeEventArgs>(emailEdit_FocusChange);
+
+                var numberEdit = view.FindViewById<EditText>(Resource.Id.editText_value);
+                numberEdit.EditorAction += HandleEditorAction;
+
+
+
+                debtLayout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout_debt);
+
+                var add_contact = view.FindViewById<Button>(Resource.Id.button_add_contact);
+                add_contact.Click += delegate {
+                    var name = view.FindViewById<EditText>(Resource.Id.editText_name).Text;
+                    curPerson.Name = name;
+                    curPerson.Email = emailEdit.Text;
+                    curPerson.Debt = double.Parse(numberEdit.Text);
+                    dbService.AddPerson(curPerson);
+
+                    curPerson = new Person();
+                    UpdatePeople();
+                    UpdatePerson();
+                    pager.SetCurrentItem(1, true);
+                };
+
+                var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+                Fill_Spinner_Contacts(view, spinner);
+                spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+                return view;
+            });
+
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+
+                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
+                secondView = view;
+
+                var listView = view.FindViewById<ListView>(Resource.Id.listView);
+                listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+
+                return view;
+            });
+
+            pager.Adapter = adaptor;
+            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
+
+            ActionBar.RemoveAllTabs();
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
+            pager.SetCurrentItem(1, true);
         }
 
         private void Save_Click(object sender, System.EventArgs e)
         {
-            var name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
-            curPerson.Name = name.Text;
-
-            if (curPerson.Id == 0)
-                dbService.AddPerson(curPerson);
+            var people = dbService.GetAllPersons();
+            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            var name = "abc123";
+            string email = "abc123@gmail.com";
+            if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
+            {
+                name = spinner.SelectedItem.ToString();
+            }
             else
+            {
+                name = FindViewById<EditText>(Resource.Id.editText_name).Text;
+            }
+
+            if (FindViewById<EditText>(Resource.Id.editText_mail).Text == "")
+            {
+                email =  (from contact in people
+                                where contact.Name == name
+                                select contact.Email).ToString();
+            }
+            double debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
+            curPerson.Name = name;
+            curPerson.Email = email;
+            curPerson.Debt += debt;
+
+            
+            //var contacts = (from contact in people
+            //                where contact.Name == curPerson.Name
+            //               select contact).FirstOrDefault;
+
+            if (!people.Any(s => s.Name == curPerson.Name))
+            {
+                dbService.AddPerson(curPerson);
+            }
+
+            else
+            {
                 dbService.UpdatePerson(curPerson);
+            }
+                
 
             curPerson = new Person();
             UpdatePeople();
             UpdatePerson();
             pager.SetCurrentItem(1, true);
+            RefreshViews();
         }
 
         

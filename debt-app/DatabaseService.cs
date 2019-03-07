@@ -22,7 +22,7 @@ namespace debt_app
         {
             string dbPath = Path.Combine(System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.Personal),
-                "debtdatabase.db1");
+                "debtDatabase5.db1");
 
             db = new SQLiteConnection(dbPath);
         }
@@ -50,6 +50,7 @@ namespace debt_app
             {
                 var newPerson = new Person();
                 newPerson.Name = "jim";
+                newPerson.Email = "jimbobjoejackson@hot.ee";
                 newPerson.Debt = 3.5;
                 db.Insert(newPerson);
             }

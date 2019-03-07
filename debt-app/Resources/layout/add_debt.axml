@@ -33,7 +33,7 @@
 		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/viewSwitcher_contacts"/>
+		android:id="@+id/viewSwitcher_contacts">
 		<LinearLayout
 			android:orientation="vertical"
 			android:minWidth="25px"
@@ -80,7 +80,7 @@
 			android:id="@+id/button_add_contact"
 			android:onClick="OnClick_Add_Contact" />
 		</LinearLayout>
-		
+		</ViewSwitcher>
 	<RelativeLayout
 		android:minWidth="25px"
 		android:minHeight="25px"
@@ -119,6 +119,7 @@
 			android:textSize="40sp"
 			android:layout_below="@id/editText_value"
 			android:layout_alignParentRight="true"
-			android:id="@+id/button_finish" />
+			android:id="@+id/button_finish"
+			android:onClick="SendBill_Click" />
 	</RelativeLayout>
 </LinearLayout>
