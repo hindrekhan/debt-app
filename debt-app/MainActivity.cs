@@ -118,7 +118,10 @@ namespace debt_app
 
         private void SendBill_Click(object sender, System.EventArgs e)
         {
-            Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + curPerson.Name + "@mail.com"));
+            var email = curPerson.Name + "@mail.com";
+            var body = "&body=Send%20money";
+
+            Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + email + body));
         }
 
         public void UpdatePerson()

@@ -24,7 +24,6 @@ namespace debt_app
             this.items = items;
         }
 
-
         public override Person this[int position]
         {
             get { return items[position]; }

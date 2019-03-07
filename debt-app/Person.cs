@@ -19,7 +19,6 @@ namespace debt_app
         public int Id { get; set; }
         public string Name { get; set; }
         public string Items { get; set; }
-        public string Email { get; set; }
 
         public static double CalcDebt(string items)
         {
