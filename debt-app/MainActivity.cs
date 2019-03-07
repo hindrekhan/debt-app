@@ -17,7 +17,6 @@ namespace debt_app
     [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
     {
-        bool trigger = false;
         ViewPager pager;
         public DatabaseService dbService;
         public Person curPerson = new Person();
@@ -65,13 +64,12 @@ namespace debt_app
 
         private void emailEdit_FocusChange(object sender, EventArgs e)
         {
-            Toast.MakeText(Application.Context, "Hello toast!", ToastLength.Short).Show();
+            var what = switcher.IndexOfChild(firstView);
+
         }
 
         private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            //if (trigger == true)
-            //{
                 Spinner spinner = (Spinner)sender;
                 if (spinner.GetItemAtPosition(e.Position).ToString() == "<Create New Contact>")
                 {
@@ -83,9 +81,6 @@ namespace debt_app
                     var sendBill = FindViewById<Button>(Resource.Id.button_finish);
                     sendBill.Click += SendBill_Click;
                 }
-                
-            //}
-            //trigger = true;
         }
 
         private int GetIndex(Spinner spinner, String myString)
@@ -158,23 +153,7 @@ namespace debt_app
                 var numberEdit = view.FindViewById<EditText>(Resource.Id.editText_value);
                 numberEdit.EditorAction += HandleEditorAction;
 
-
-
                 debtLayout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout_debt);
-
-                var add_contact = view.FindViewById<Button>(Resource.Id.button_add_contact);
-                add_contact.Click += delegate {
-                    var name = view.FindViewById<EditText>(Resource.Id.editText_name).Text;
-                    curPerson.Name = name;
-                    curPerson.Email = emailEdit.Text;
-                    curPerson.Debt = double.Parse(numberEdit.Text);
-                    dbService.AddPerson(curPerson);
-
-                    curPerson = new Person();
-                    UpdatePeople();
-                    UpdatePerson();
-                    pager.SetCurrentItem(1, true);
-                };
 
                 var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
                 Fill_Spinner_Contacts(view, spinner);
@@ -205,53 +184,46 @@ namespace debt_app
 
         private void Save_Click(object sender, System.EventArgs e)
         {
-            var people = dbService.GetAllPersons();
-            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
-            var name = "abc123";
-            string email = "abc123@gmail.com";
-            if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
-            {
-                name = spinner.SelectedItem.ToString();
-            }
-            else
-            {
-                name = FindViewById<EditText>(Resource.Id.editText_name).Text;
-            }
+                var people = dbService.GetAllPersons();
+                var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+                var name = "abc123";
+                string email = "abc123@gmail.com";
+                if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
+                {
+                    name = spinner.SelectedItem.ToString();
+                }
+                else
+                {
+                    name = FindViewById<EditText>(Resource.Id.editText_name).Text;
+                }
 
-            if (FindViewById<EditText>(Resource.Id.editText_mail).Text == "")
-            {
-                email =  (from contact in people
-                                where contact.Name == name
-                                select contact.Email).ToString();
-            }
-            double debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
-            curPerson.Name = name;
-            curPerson.Email = email;
-            curPerson.Debt += debt;
+                double debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
+                curPerson.Name = name;
+                curPerson.Email = email;
+                curPerson.Debt += debt;
 
+
+                //var contacts = (from contact in people
+                //                where contact.Name == curPerson.Name
+                //               select contact).FirstOrDefault;
+
+                if (!people.Any(s => s.Name == curPerson.Name))
+                {
+                    dbService.AddPerson(curPerson);
+                }
+
+                else
+                {
+                    dbService.UpdatePerson(curPerson);
+                }
+
+
+                curPerson = new Person();
+                UpdatePeople();
+                UpdatePerson();
+                pager.SetCurrentItem(1, true);
+                RefreshViews();
             
-            //var contacts = (from contact in people
-            //                where contact.Name == curPerson.Name
-            //               select contact).FirstOrDefault;
-
-            if (!people.Any(s => s.Name == curPerson.Name))
-            {
-                dbService.AddPerson(curPerson);
-            }
-
-            else
-            {
-                dbService.UpdatePerson(curPerson);
-            }
-                
-
-            curPerson = new Person();
-            UpdatePeople();
-            UpdatePerson();
-            pager.SetCurrentItem(1, true);
-            RefreshViews();
         }
-
-        
     }
 }

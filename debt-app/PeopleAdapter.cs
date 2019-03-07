@@ -51,7 +51,7 @@ namespace debt_app
             var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
 
             name.Text = items[position].Name;
-            debt.Text = items[position].Debt.ToString();
+            debt.Text = items[position].Debt.ToString() + "€";
             //debt.Text = Person.CalcDebt(items[position].Items).ToString() + "€";
 
             layout.Tag = position;
