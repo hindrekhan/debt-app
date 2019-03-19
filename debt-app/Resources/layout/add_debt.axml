@@ -92,7 +92,7 @@
 			android:textSize="70sp"
 			android:id="@+id/editText_value" />
 		<Button
-			android:text="Save"
+			android:text="Add debt"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="40sp"
