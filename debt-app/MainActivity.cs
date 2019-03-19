@@ -184,45 +184,59 @@ namespace debt_app
 
         private void Save_Click(object sender, System.EventArgs e)
         {
-                var people = dbService.GetAllPersons();
-                var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
-                var name = "abc123";
-                string email = "abc123@gmail.com";
-                if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
-                {
-                    name = spinner.SelectedItem.ToString();
-                }
-                else
-                {
-                    name = FindViewById<EditText>(Resource.Id.editText_name).Text;
-                }
+            var people = dbService.GetAllPersons();
+            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            var name = "abc123";
+            string email = "abc123@gmail.com";
+            if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
+            {
+                name = spinner.SelectedItem.ToString();
+            }
+            else
+            {
+                name = FindViewById<EditText>(Resource.Id.editText_name).Text;
+            }
 
-                double debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
-                curPerson.Name = name;
-                curPerson.Email = email;
-                curPerson.Debt += debt;
+            double debt = 0.0;
+            try
+            {
+                debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
+            }
+            catch
+            {
+                Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                Android.App.AlertDialog alert = dialog.Create();
+                alert.SetTitle("Warning");
+                alert.SetMessage("You entered incorrect debt amount");
+
+                alert.Show();
+            }
+
+            curPerson.Name = name;
+            curPerson.Email = email;
+            curPerson.Debt += debt;
 
 
-                //var contacts = (from contact in people
-                //                where contact.Name == curPerson.Name
-                //               select contact).FirstOrDefault;
+            //var contacts = (from contact in people
+            //                where contact.Name == curPerson.Name
+            //               select contact).FirstOrDefault;
 
-                if (!people.Any(s => s.Name == curPerson.Name))
-                {
-                    dbService.AddPerson(curPerson);
-                }
+            if (!people.Any(s => s.Name == curPerson.Name))
+            {
+                dbService.AddPerson(curPerson);
+            }
 
-                else
-                {
-                    dbService.UpdatePerson(curPerson);
-                }
+            else
+            {
+                dbService.UpdatePerson(curPerson);
+            }
 
 
-                curPerson = new Person();
-                UpdatePeople();
-                UpdatePerson();
-                pager.SetCurrentItem(1, true);
-                RefreshViews();
+            curPerson = new Person();
+            UpdatePeople();
+            UpdatePerson();
+            pager.SetCurrentItem(1, true);
+            RefreshViews();
             
         }
     }
