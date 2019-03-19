@@ -3087,8 +3087,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090037
 			public const int SYM = 2131296311;
 			
-			// aapt resource value: 0x7f0900ca
-			public const int action0 = 2131296458;
+			// aapt resource value: 0x7f0900c8
+			public const int action0 = 2131296456;
 			
 			// aapt resource value: 0x7f09007c
 			public const int action_bar = 2131296380;
@@ -3111,17 +3111,17 @@ namespace debt_app
 			// aapt resource value: 0x7f09005a
 			public const int action_bar_title = 2131296346;
 			
-			// aapt resource value: 0x7f0900c7
-			public const int action_container = 2131296455;
+			// aapt resource value: 0x7f0900c5
+			public const int action_container = 2131296453;
 			
 			// aapt resource value: 0x7f09007d
 			public const int action_context_bar = 2131296381;
 			
-			// aapt resource value: 0x7f0900ce
-			public const int action_divider = 2131296462;
+			// aapt resource value: 0x7f0900cc
+			public const int action_divider = 2131296460;
 			
-			// aapt resource value: 0x7f0900c8
-			public const int action_image = 2131296456;
+			// aapt resource value: 0x7f0900c6
+			public const int action_image = 2131296454;
 			
 			// aapt resource value: 0x7f090003
 			public const int action_menu_divider = 2131296259;
@@ -3138,11 +3138,11 @@ namespace debt_app
 			// aapt resource value: 0x7f09005c
 			public const int action_mode_close_button = 2131296348;
 			
-			// aapt resource value: 0x7f0900c9
-			public const int action_text = 2131296457;
+			// aapt resource value: 0x7f0900c7
+			public const int action_text = 2131296455;
 			
-			// aapt resource value: 0x7f0900d7
-			public const int actions = 2131296471;
+			// aapt resource value: 0x7f0900d5
+			public const int actions = 2131296469;
 			
 			// aapt resource value: 0x7f09005d
 			public const int activity_chooser_view_content = 2131296349;
@@ -3178,16 +3178,10 @@ namespace debt_app
 			public const int buttonPanel = 2131296355;
 			
 			// aapt resource value: 0x7f090096
-			public const int button_decrease = 2131296406;
+			public const int button_finish = 2131296406;
 			
-			// aapt resource value: 0x7f090098
-			public const int button_finish = 2131296408;
-			
-			// aapt resource value: 0x7f090097
-			public const int button_increase = 2131296407;
-			
-			// aapt resource value: 0x7f0900cb
-			public const int cancel_action = 2131296459;
+			// aapt resource value: 0x7f0900c9
+			public const int cancel_action = 2131296457;
 			
 			// aapt resource value: 0x7f090045
 			public const int center = 2131296325;
@@ -3201,11 +3195,11 @@ namespace debt_app
 			// aapt resource value: 0x7f090073
 			public const int checkbox = 2131296371;
 			
-			// aapt resource value: 0x7f0900d3
-			public const int chronometer = 2131296467;
+			// aapt resource value: 0x7f0900d1
+			public const int chronometer = 2131296465;
 			
-			// aapt resource value: 0x7f0900e0
-			public const int clear = 2131296480;
+			// aapt resource value: 0x7f0900de
+			public const int clear = 2131296478;
 			
 			// aapt resource value: 0x7f09004e
 			public const int clip_horizontal = 2131296334;
@@ -3216,14 +3210,14 @@ namespace debt_app
 			// aapt resource value: 0x7f090039
 			public const int collapseActionView = 2131296313;
 			
-			// aapt resource value: 0x7f09009b
-			public const int container = 2131296411;
+			// aapt resource value: 0x7f090099
+			public const int container = 2131296409;
 			
 			// aapt resource value: 0x7f090066
 			public const int contentPanel = 2131296358;
 			
-			// aapt resource value: 0x7f09009c
-			public const int coordinator = 2131296412;
+			// aapt resource value: 0x7f09009a
+			public const int coordinator = 2131296410;
 			
 			// aapt resource value: 0x7f09006d
 			public const int custom = 2131296365;
@@ -3231,8 +3225,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09006c
 			public const int customPanel = 2131296364;
 			
-			// aapt resource value: 0x7f0900aa
-			public const int debt = 2131296426;
+			// aapt resource value: 0x7f0900a8
+			public const int debt = 2131296424;
 			
 			// aapt resource value: 0x7f09007a
 			public const int decor_content_parent = 2131296378;
@@ -3240,23 +3234,23 @@ namespace debt_app
 			// aapt resource value: 0x7f090060
 			public const int default_activity_button = 2131296352;
 			
-			// aapt resource value: 0x7f0900dd
-			public const int deleteButton = 2131296477;
+			// aapt resource value: 0x7f0900db
+			public const int deleteButton = 2131296475;
 			
-			// aapt resource value: 0x7f09009e
-			public const int design_bottom_sheet = 2131296414;
-			
-			// aapt resource value: 0x7f0900a5
-			public const int design_menu_item_action_area = 2131296421;
-			
-			// aapt resource value: 0x7f0900a4
-			public const int design_menu_item_action_area_stub = 2131296420;
+			// aapt resource value: 0x7f09009c
+			public const int design_bottom_sheet = 2131296412;
 			
 			// aapt resource value: 0x7f0900a3
-			public const int design_menu_item_text = 2131296419;
+			public const int design_menu_item_action_area = 2131296419;
 			
 			// aapt resource value: 0x7f0900a2
-			public const int design_navigation_view = 2131296418;
+			public const int design_menu_item_action_area_stub = 2131296418;
+			
+			// aapt resource value: 0x7f0900a1
+			public const int design_menu_item_text = 2131296417;
+			
+			// aapt resource value: 0x7f0900a0
+			public const int design_navigation_view = 2131296416;
 			
 			// aapt resource value: 0x7f090020
 			public const int disableHome = 2131296288;
@@ -3276,8 +3270,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090030
 			public const int end = 2131296304;
 			
-			// aapt resource value: 0x7f0900d9
-			public const int end_padder = 2131296473;
+			// aapt resource value: 0x7f0900d7
+			public const int end_padder = 2131296471;
 			
 			// aapt resource value: 0x7f09003f
 			public const int enterAlways = 2131296319;
@@ -3303,8 +3297,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090048
 			public const int fill_vertical = 2131296328;
 			
-			// aapt resource value: 0x7f0900db
-			public const int finalPrice = 2131296475;
+			// aapt resource value: 0x7f0900d9
+			public const int finalPrice = 2131296473;
 			
 			// aapt resource value: 0x7f090054
 			public const int @fixed = 2131296340;
@@ -3315,8 +3309,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09000a
 			public const int ghost_view = 2131296266;
 			
-			// aapt resource value: 0x7f0900e4
-			public const int gridLayout1 = 2131296484;
+			// aapt resource value: 0x7f0900e2
+			public const int gridLayout1 = 2131296482;
 			
 			// aapt resource value: 0x7f090005
 			public const int home = 2131296261;
@@ -3327,8 +3321,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090062
 			public const int icon = 2131296354;
 			
-			// aapt resource value: 0x7f0900d8
-			public const int icon_group = 2131296472;
+			// aapt resource value: 0x7f0900d6
+			public const int icon_group = 2131296470;
 			
 			// aapt resource value: 0x7f09003a
 			public const int ifRoom = 2131296314;
@@ -3336,38 +3330,38 @@ namespace debt_app
 			// aapt resource value: 0x7f09005f
 			public const int image = 2131296351;
 			
-			// aapt resource value: 0x7f0900a8
-			public const int imageView1 = 2131296424;
+			// aapt resource value: 0x7f0900a6
+			public const int imageView1 = 2131296422;
 			
-			// aapt resource value: 0x7f0900d4
-			public const int info = 2131296468;
+			// aapt resource value: 0x7f0900d2
+			public const int info = 2131296466;
 			
 			// aapt resource value: 0x7f090059
 			public const int italic = 2131296345;
 			
+			// aapt resource value: 0x7f0900e3
+			public const int item1 = 2131296483;
+			
+			// aapt resource value: 0x7f0900e4
+			public const int item2 = 2131296484;
+			
 			// aapt resource value: 0x7f0900e5
-			public const int item1 = 2131296485;
+			public const int item3 = 2131296485;
 			
 			// aapt resource value: 0x7f0900e6
-			public const int item2 = 2131296486;
+			public const int item4 = 2131296486;
 			
 			// aapt resource value: 0x7f0900e7
-			public const int item3 = 2131296487;
+			public const int item5 = 2131296487;
 			
 			// aapt resource value: 0x7f0900e8
-			public const int item4 = 2131296488;
-			
-			// aapt resource value: 0x7f0900e9
-			public const int item5 = 2131296489;
-			
-			// aapt resource value: 0x7f0900ea
-			public const int item6 = 2131296490;
+			public const int item6 = 2131296488;
 			
 			// aapt resource value: 0x7f090000
 			public const int item_touch_helper_previous_elevation = 2131296256;
 			
-			// aapt resource value: 0x7f09009a
-			public const int largeLabel = 2131296410;
+			// aapt resource value: 0x7f090098
+			public const int largeLabel = 2131296408;
 			
 			// aapt resource value: 0x7f090049
 			public const int left = 2131296329;
@@ -3378,14 +3372,14 @@ namespace debt_app
 			// aapt resource value: 0x7f090018
 			public const int line3 = 2131296280;
 			
-			// aapt resource value: 0x7f0900dc
-			public const int linearLayout1 = 2131296476;
+			// aapt resource value: 0x7f0900da
+			public const int linearLayout1 = 2131296474;
 			
-			// aapt resource value: 0x7f0900e2
-			public const int linearLayout2 = 2131296482;
+			// aapt resource value: 0x7f0900e0
+			public const int linearLayout2 = 2131296480;
 			
-			// aapt resource value: 0x7f0900df
-			public const int linearLayout5 = 2131296479;
+			// aapt resource value: 0x7f0900dd
+			public const int linearLayout5 = 2131296477;
 			
 			// aapt resource value: 0x7f09008e
 			public const int linearlayout_contacts = 2131296398;
@@ -3396,20 +3390,20 @@ namespace debt_app
 			// aapt resource value: 0x7f09001d
 			public const int listMode = 2131296285;
 			
-			// aapt resource value: 0x7f0900ab
-			public const int listView = 2131296427;
+			// aapt resource value: 0x7f0900a9
+			public const int listView = 2131296425;
 			
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900ed
-			public const int masked = 2131296493;
-			
-			// aapt resource value: 0x7f0900cd
-			public const int media_actions = 2131296461;
-			
 			// aapt resource value: 0x7f0900eb
-			public const int message = 2131296491;
+			public const int masked = 2131296491;
+			
+			// aapt resource value: 0x7f0900cb
+			public const int media_actions = 2131296459;
+			
+			// aapt resource value: 0x7f0900e9
+			public const int message = 2131296489;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -3417,89 +3411,89 @@ namespace debt_app
 			// aapt resource value: 0x7f090053
 			public const int mini = 2131296339;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int mr_art = 2131296441;
+			// aapt resource value: 0x7f0900b7
+			public const int mr_art = 2131296439;
 			
-			// aapt resource value: 0x7f0900ae
-			public const int mr_chooser_list = 2131296430;
-			
-			// aapt resource value: 0x7f0900b1
-			public const int mr_chooser_route_desc = 2131296433;
+			// aapt resource value: 0x7f0900ac
+			public const int mr_chooser_list = 2131296428;
 			
 			// aapt resource value: 0x7f0900af
-			public const int mr_chooser_route_icon = 2131296431;
-			
-			// aapt resource value: 0x7f0900b0
-			public const int mr_chooser_route_name = 2131296432;
+			public const int mr_chooser_route_desc = 2131296431;
 			
 			// aapt resource value: 0x7f0900ad
-			public const int mr_chooser_title = 2131296429;
+			public const int mr_chooser_route_icon = 2131296429;
 			
-			// aapt resource value: 0x7f0900b6
-			public const int mr_close = 2131296438;
+			// aapt resource value: 0x7f0900ae
+			public const int mr_chooser_route_name = 2131296430;
 			
-			// aapt resource value: 0x7f0900bc
-			public const int mr_control_divider = 2131296444;
-			
-			// aapt resource value: 0x7f0900c2
-			public const int mr_control_playback_ctrl = 2131296450;
-			
-			// aapt resource value: 0x7f0900c5
-			public const int mr_control_subtitle = 2131296453;
-			
-			// aapt resource value: 0x7f0900c4
-			public const int mr_control_title = 2131296452;
-			
-			// aapt resource value: 0x7f0900c3
-			public const int mr_control_title_container = 2131296451;
-			
-			// aapt resource value: 0x7f0900b7
-			public const int mr_custom_control = 2131296439;
-			
-			// aapt resource value: 0x7f0900b8
-			public const int mr_default_control = 2131296440;
-			
-			// aapt resource value: 0x7f0900b3
-			public const int mr_dialog_area = 2131296435;
-			
-			// aapt resource value: 0x7f0900b2
-			public const int mr_expandable_area = 2131296434;
-			
-			// aapt resource value: 0x7f0900c6
-			public const int mr_group_expand_collapse = 2131296454;
-			
-			// aapt resource value: 0x7f0900ba
-			public const int mr_media_main_control = 2131296442;
-			
-			// aapt resource value: 0x7f0900b5
-			public const int mr_name = 2131296437;
-			
-			// aapt resource value: 0x7f0900bb
-			public const int mr_playback_control = 2131296443;
+			// aapt resource value: 0x7f0900ab
+			public const int mr_chooser_title = 2131296427;
 			
 			// aapt resource value: 0x7f0900b4
-			public const int mr_title_bar = 2131296436;
+			public const int mr_close = 2131296436;
 			
-			// aapt resource value: 0x7f0900bd
-			public const int mr_volume_control = 2131296445;
-			
-			// aapt resource value: 0x7f0900be
-			public const int mr_volume_group_list = 2131296446;
+			// aapt resource value: 0x7f0900ba
+			public const int mr_control_divider = 2131296442;
 			
 			// aapt resource value: 0x7f0900c0
-			public const int mr_volume_item_icon = 2131296448;
+			public const int mr_control_playback_ctrl = 2131296448;
+			
+			// aapt resource value: 0x7f0900c3
+			public const int mr_control_subtitle = 2131296451;
+			
+			// aapt resource value: 0x7f0900c2
+			public const int mr_control_title = 2131296450;
 			
 			// aapt resource value: 0x7f0900c1
-			public const int mr_volume_slider = 2131296449;
+			public const int mr_control_title_container = 2131296449;
+			
+			// aapt resource value: 0x7f0900b5
+			public const int mr_custom_control = 2131296437;
+			
+			// aapt resource value: 0x7f0900b6
+			public const int mr_default_control = 2131296438;
+			
+			// aapt resource value: 0x7f0900b1
+			public const int mr_dialog_area = 2131296433;
+			
+			// aapt resource value: 0x7f0900b0
+			public const int mr_expandable_area = 2131296432;
+			
+			// aapt resource value: 0x7f0900c4
+			public const int mr_group_expand_collapse = 2131296452;
+			
+			// aapt resource value: 0x7f0900b8
+			public const int mr_media_main_control = 2131296440;
+			
+			// aapt resource value: 0x7f0900b3
+			public const int mr_name = 2131296435;
+			
+			// aapt resource value: 0x7f0900b9
+			public const int mr_playback_control = 2131296441;
+			
+			// aapt resource value: 0x7f0900b2
+			public const int mr_title_bar = 2131296434;
+			
+			// aapt resource value: 0x7f0900bb
+			public const int mr_volume_control = 2131296443;
+			
+			// aapt resource value: 0x7f0900bc
+			public const int mr_volume_group_list = 2131296444;
+			
+			// aapt resource value: 0x7f0900be
+			public const int mr_volume_item_icon = 2131296446;
+			
+			// aapt resource value: 0x7f0900bf
+			public const int mr_volume_slider = 2131296447;
 			
 			// aapt resource value: 0x7f090028
 			public const int multiply = 2131296296;
 			
-			// aapt resource value: 0x7f0900e3
-			public const int name = 2131296483;
+			// aapt resource value: 0x7f0900e1
+			public const int name = 2131296481;
 			
-			// aapt resource value: 0x7f0900a1
-			public const int navigation_header_container = 2131296417;
+			// aapt resource value: 0x7f09009f
+			public const int navigation_header_container = 2131296415;
 			
 			// aapt resource value: 0x7f09003b
 			public const int never = 2131296315;
@@ -3510,17 +3504,17 @@ namespace debt_app
 			// aapt resource value: 0x7f09001e
 			public const int normal = 2131296286;
 			
-			// aapt resource value: 0x7f0900d6
-			public const int notification_background = 2131296470;
+			// aapt resource value: 0x7f0900d4
+			public const int notification_background = 2131296468;
 			
-			// aapt resource value: 0x7f0900d0
-			public const int notification_main_column = 2131296464;
+			// aapt resource value: 0x7f0900ce
+			public const int notification_main_column = 2131296462;
 			
-			// aapt resource value: 0x7f0900cf
-			public const int notification_main_column_container = 2131296463;
+			// aapt resource value: 0x7f0900cd
+			public const int notification_main_column_container = 2131296461;
 			
-			// aapt resource value: 0x7f0900ac
-			public const int pager = 2131296428;
+			// aapt resource value: 0x7f0900aa
+			public const int pager = 2131296426;
 			
 			// aapt resource value: 0x7f09004c
 			public const int parallax = 2131296332;
@@ -3534,8 +3528,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09004d
 			public const int pin = 2131296333;
 			
-			// aapt resource value: 0x7f0900da
-			public const int prices = 2131296474;
+			// aapt resource value: 0x7f0900d8
+			public const int prices = 2131296472;
 			
 			// aapt resource value: 0x7f090006
 			public const int progress_circular = 2131296262;
@@ -3546,8 +3540,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090075
 			public const int radio = 2131296373;
 			
-			// aapt resource value: 0x7f0900a7
-			public const int relativeLayout1 = 2131296423;
+			// aapt resource value: 0x7f0900a5
+			public const int relativeLayout1 = 2131296421;
 			
 			// aapt resource value: 0x7f090094
 			public const int relativeLayout_debt = 2131296404;
@@ -3555,14 +3549,14 @@ namespace debt_app
 			// aapt resource value: 0x7f09004a
 			public const int right = 2131296330;
 			
-			// aapt resource value: 0x7f0900d5
-			public const int right_icon = 2131296469;
+			// aapt resource value: 0x7f0900d3
+			public const int right_icon = 2131296467;
 			
-			// aapt resource value: 0x7f0900d1
-			public const int right_side = 2131296465;
+			// aapt resource value: 0x7f0900cf
+			public const int right_side = 2131296463;
 			
-			// aapt resource value: 0x7f0900e1
-			public const int save = 2131296481;
+			// aapt resource value: 0x7f0900df
+			public const int save = 2131296479;
 			
 			// aapt resource value: 0x7f09000c
 			public const int save_image_matrix = 2131296268;
@@ -3624,8 +3618,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09008a
 			public const int select_dialog_listview = 2131296394;
 			
-			// aapt resource value: 0x7f0900de
-			public const int sendBill = 2131296478;
+			// aapt resource value: 0x7f0900dc
+			public const int sendBill = 2131296476;
 			
 			// aapt resource value: 0x7f090074
 			public const int shortcut = 2131296372;
@@ -3639,14 +3633,14 @@ namespace debt_app
 			// aapt resource value: 0x7f090025
 			public const int showTitle = 2131296293;
 			
-			// aapt resource value: 0x7f090099
-			public const int smallLabel = 2131296409;
+			// aapt resource value: 0x7f090097
+			public const int smallLabel = 2131296407;
 			
-			// aapt resource value: 0x7f0900a0
-			public const int snackbar_action = 2131296416;
+			// aapt resource value: 0x7f09009e
+			public const int snackbar_action = 2131296414;
 			
-			// aapt resource value: 0x7f09009f
-			public const int snackbar_text = 2131296415;
+			// aapt resource value: 0x7f09009d
+			public const int snackbar_text = 2131296413;
 			
 			// aapt resource value: 0x7f090043
 			public const int snap = 2131296323;
@@ -3672,8 +3666,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09004b
 			public const int start = 2131296331;
 			
-			// aapt resource value: 0x7f0900cc
-			public const int status_bar_latest_event_content = 2131296460;
+			// aapt resource value: 0x7f0900ca
+			public const int status_bar_latest_event_content = 2131296458;
 			
 			// aapt resource value: 0x7f090076
 			public const int submenuarrow = 2131296374;
@@ -3705,8 +3699,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09008c
 			public const int text_TheirDebt = 2131296396;
 			
-			// aapt resource value: 0x7f0900a6
-			public const int text_input_password_toggle = 2131296422;
+			// aapt resource value: 0x7f0900a4
+			public const int text_input_password_toggle = 2131296420;
 			
 			// aapt resource value: 0x7f09008f
 			public const int text_spinner = 2131296399;
@@ -3717,8 +3711,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090015
 			public const int textinput_error = 2131296277;
 			
-			// aapt resource value: 0x7f0900d2
-			public const int time = 2131296466;
+			// aapt resource value: 0x7f0900d0
+			public const int time = 2131296464;
 			
 			// aapt resource value: 0x7f09001c
 			public const int title = 2131296284;
@@ -3735,8 +3729,8 @@ namespace debt_app
 			// aapt resource value: 0x7f09006e
 			public const int topPanel = 2131296366;
 			
-			// aapt resource value: 0x7f09009d
-			public const int touch_outside = 2131296413;
+			// aapt resource value: 0x7f09009b
+			public const int touch_outside = 2131296411;
 			
 			// aapt resource value: 0x7f09000f
 			public const int transition_current_scene = 2131296271;
@@ -3753,8 +3747,8 @@ namespace debt_app
 			// aapt resource value: 0x7f090013
 			public const int transition_transform = 2131296275;
 			
-			// aapt resource value: 0x7f0900a9
-			public const int txt_name = 2131296425;
+			// aapt resource value: 0x7f0900a7
+			public const int txt_name = 2131296423;
 			
 			// aapt resource value: 0x7f09002d
 			public const int uniform = 2131296301;
@@ -3771,11 +3765,11 @@ namespace debt_app
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900ec
-			public const int visible = 2131296492;
+			// aapt resource value: 0x7f0900ea
+			public const int visible = 2131296490;
 			
-			// aapt resource value: 0x7f0900bf
-			public const int volume_item_container = 2131296447;
+			// aapt resource value: 0x7f0900bd
+			public const int volume_item_container = 2131296445;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
