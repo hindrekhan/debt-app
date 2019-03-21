@@ -11,9 +11,6 @@ using System.Linq;
 using System;
 using Android.Views.InputMethods;
 using Android.Hardware.Input;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 
 namespace debt_app
 {
@@ -30,8 +27,6 @@ namespace debt_app
 
         protected override void OnCreate(Bundle bundle)
         {
-            AppCenter.Start("0f77a2e6-05ad-4dc9-a831-725683dc2e64", typeof(Analytics), typeof(Crashes));
-
             base.OnCreate(bundle);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
