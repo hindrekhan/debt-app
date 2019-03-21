@@ -14,6 +14,7 @@ using Android.Hardware.Input;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
 
 namespace debt_app
 {
@@ -34,6 +35,7 @@ namespace debt_app
             AppCenter.Start("0f77a2e6-05ad-4dc9-a831-725683dc2e64",
                    typeof(Analytics), typeof(Crashes));
             AppCenter.Start("0f77a2e6-05ad-4dc9-a831-725683dc2e64", typeof(Analytics), typeof(Crashes));
+            Distribute.SetEnabledAsync(true);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             Xamarin.Forms.Forms.Init(this, bundle);
