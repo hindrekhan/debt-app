@@ -42,7 +42,7 @@ namespace debt_app
             dbService = new DatabaseService();
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
-
+            dbService.DeleteDatabase();
             RefreshViews();
         }
 
@@ -73,6 +73,9 @@ namespace debt_app
         private void emailEdit_FocusChange(object sender, EventArgs e)
         {
             var what = switcher.IndexOfChild(firstView);
+            debtLayout.Visibility = ViewStates.Visible;
+            var sendBill = FindViewById<Button>(Resource.Id.button_finish);
+            sendBill.Click += SendBill_Click;
 
         }
 
@@ -123,7 +126,7 @@ namespace debt_app
             var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
             listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
 
-            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
             Fill_Spinner_Contacts(firstView, spinner);
         }
 
@@ -136,7 +139,7 @@ namespace debt_app
 
         public void UpdatePerson()
         {
-            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
             spinner.SetSelection(GetIndex(spinner, curPerson.Name));
 
             
@@ -193,16 +196,17 @@ namespace debt_app
         private void Save_Click(object sender, System.EventArgs e)
         {
             var people = dbService.GetAllPersons();
-            var spinner = FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
             var name = "abc123";
             string email = "abc123@gmail.com";
-            if (FindViewById<EditText>(Resource.Id.editText_name).Text == "")
+            EditText editText_name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
+            if (editText_name.Text == "")
             {
                 name = spinner.SelectedItem.ToString();
             }
             else
             {
-                name = FindViewById<EditText>(Resource.Id.editText_name).Text;
+                name = editText_name.Text;
             }
 
             double debt = 0.0;
@@ -222,7 +226,7 @@ namespace debt_app
 
             curPerson.Name = name;
             curPerson.Email = email;
-            if (FindViewById<Switch>(Resource.Id.switch_debt).Checked==true)
+            if (firstView.FindViewById<Switch>(Resource.Id.switch_debt).Checked==true)
             {
                 curPerson.Debt -= debt;
             }

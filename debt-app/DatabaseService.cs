@@ -32,6 +32,11 @@ namespace debt_app
             db.CreateTable<Person>();
         }
 
+        public void DeleteDatabase()
+        {
+            db.DeleteAll<Person>();
+        }
+
         public void AddPerson(Person Person)
         {
             db.Insert(Person);
@@ -46,14 +51,6 @@ namespace debt_app
         {
             db.CreateTable<Person>();
 
-            if (db.Table<Person>().Count() == 0)
-            {
-                var newPerson = new Person();
-                newPerson.Name = "jim";
-                newPerson.Email = "jimbobjoejackson@hot.ee";
-                newPerson.Debt = 3.5;
-                db.Insert(newPerson);
-            }
         }
 
         public List<Person> GetAllPersons()
