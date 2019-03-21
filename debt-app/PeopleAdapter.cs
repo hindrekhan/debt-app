@@ -43,6 +43,14 @@ namespace debt_app
 
             if (view == null)
             {
+                
+                    if ( items[position].Debt < 0)
+                    {
+
+                    view = context.LayoutInflater.Inflate(Resource.Layout.list_item2, null);
+                    }
+
+
                 view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
             }
 
