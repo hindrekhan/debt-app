@@ -214,7 +214,15 @@ namespace debt_app
 
             curPerson.Name = name;
             curPerson.Email = email;
-            curPerson.Debt += debt;
+            if (FindViewById<Switch>(Resource.Id.switch_debt).Checked==true)
+            {
+                curPerson.Debt -= debt;
+            }
+            else
+            {
+                curPerson.Debt += debt;
+            }
+            
 
 
             //var contacts = (from contact in people
