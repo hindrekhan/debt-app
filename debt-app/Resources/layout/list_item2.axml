@@ -1,0 +1,40 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:minWidth="25px"
+	android:minHeight="25px">
+	<RelativeLayout
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/relativeLayout1"
+		android:background="#F15B3A">
+		<ImageView
+			android:src="@drawable/user2"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:id="@+id/imageView1" />
+		<TextView
+			android:text="Text"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="10dp"
+			android:layout_toRightOf="@id/imageView1"
+			android:id="@+id/txt_name" />
+		<TextView
+			android:text="debt"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="10dp"
+			android:id="@+id/debt"
+			android:layout_marginLeft="64px" />
+	</RelativeLayout>
+</LinearLayout>
