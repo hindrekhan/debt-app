@@ -85,6 +85,8 @@ namespace debt_app
                 if (spinner.GetItemAtPosition(e.Position).ToString() == "<Create New Contact>")
                 {
                     switcher.ShowNext();
+                    firstView.FindViewById<EditText>(Resource.Id.editText_name).Text = "";
+                    firstView.FindViewById<EditText>(Resource.Id.editText_mail).Text = "";
                 }
                 else
                 {
@@ -197,12 +199,21 @@ namespace debt_app
         {
             var people = dbService.GetAllPersons();
             var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
-            var name = "abc123";
+            string name;
             string email = "abc123@gmail.com";
             EditText editText_name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
             if (editText_name.Text == "")
             {
                 name = spinner.SelectedItem.ToString();
+                if (name == "" || name == "<Create New Contact>")
+                {
+                    Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                    Android.App.AlertDialog alert = dialog.Create();
+                    alert.SetTitle("Warning");
+                    alert.SetMessage("You entered incorrect name");
+                    alert.Show();
+                    return;
+                }
             }
             else
             {
@@ -220,8 +231,8 @@ namespace debt_app
                 Android.App.AlertDialog alert = dialog.Create();
                 alert.SetTitle("Warning");
                 alert.SetMessage("You entered incorrect debt amount");
-
                 alert.Show();
+                return;
             }
 
             curPerson.Name = name;
