@@ -18,7 +18,7 @@ using Microsoft.AppCenter.Distribute;
 
 namespace debt_app
 {
-    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : FragmentActivity
     {
         ViewPager pager;
