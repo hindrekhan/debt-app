@@ -24,7 +24,6 @@ namespace debt_app
     [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
-        public DatabaseService dbService;
         private static bool isFabOpen;
         private FloatingActionButton fabDebt;
         private FloatingActionButton fabContact;
@@ -65,19 +64,15 @@ namespace debt_app
             {
                 CloseFabMenu();
                 Toast.MakeText(this, "You are now in debt 9,000,000€ to the Russian Mafia", ToastLength.Short).Show();
+                StartActivity(typeof(AddDebtActivity));
             };
             fabContact.Click += (o, e) =>
             {
                 CloseFabMenu();
                 Toast.MakeText(this, "The Russian Mafia added you on Facebook", ToastLength.Short).Show();
+                StartActivity(typeof(AddContactActivity));
             };
             bgFabMenu.Click += (o, e) => CloseFabMenu();
-
-            dbService = new DatabaseService();
-            dbService.CreateDatabase();
-            dbService.CreateTableWithData();
-            dbService.DeleteDatabase();
-            
         }
 
         private void ShowFabMenu()
@@ -89,16 +84,15 @@ namespace debt_app
 
             fabMain.Animate().Rotation(135f);
             bgFabMenu.Animate().Alpha(1f);
-            fabDebt.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_100))
+            fabDebt.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_135))
                 .Rotation(0f);
-            fabContact.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_55))
+            fabContact.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_75))
                 .Rotation(0f);
         }
 
         private void CloseFabMenu()
         {
             isFabOpen = false;
-
             fabMain.Animate().Rotation(0f);
             bgFabMenu.Animate().Alpha(0f);
             fabDebt.Animate()
@@ -118,10 +112,7 @@ namespace debt_app
                 this.viewsToHide = viewsToHide;
             }
 
-            public void OnAnimationCancel(Animator animation)
-            {
-                
-            }
+            public void OnAnimationCancel(Animator animation) { }
 
             public void OnAnimationEnd(Animator animation)
             {
@@ -134,15 +125,9 @@ namespace debt_app
                 }
             }
 
-            public void OnAnimationRepeat(Animator animation)
-            {
-                
-            }
+            public void OnAnimationRepeat(Animator animation) { }
 
-            public void OnAnimationStart(Animator animation)
-            {
-                
-            }
+            public void OnAnimationStart(Animator animation) { }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -172,11 +157,5 @@ namespace debt_app
                 e.Handled = true;
             }
         }
-
-        //public void UpdatePeople()
-        //{
-        //    var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
-        //    listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-        //}
     }
 }

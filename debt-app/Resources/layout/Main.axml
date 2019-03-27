@@ -44,8 +44,12 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="bottom|end"
+		android:scaleType="fitXY"
 		android:layout_margin="@dimen/fab_margin"
+		android:padding="0dp"
         app:fabSize="normal" 
+		app:borderWidth="0dp"
+		app:useCompatPadding="true" 
 		app:srcCompat="@drawable/round_add_24"/>
 
 </android.support.design.widget.CoordinatorLayout>
