@@ -7,100 +7,113 @@ using Android.Content;
 using System.Collections.Generic;
 using Android.Views;
 using Xamarin.Android.Net;
+using System.Linq;
+using System;
+using Android.Views.InputMethods;
+using Android.Hardware.Input;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
 
 namespace debt_app
 {
-    [Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : FragmentActivity
     {
-        int count = 1;
-        EditText prices;
-        TextView finalPrice;
         ViewPager pager;
         public DatabaseService dbService;
         public Person curPerson = new Person();
         public View firstView;
         public View secondView;
+        ViewSwitcher switcher;
+        RelativeLayout debtLayout;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            AppCenter.Start("0f77a2e6-05ad-4dc9-a831-725683dc2e64",
+                   typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("0f77a2e6-05ad-4dc9-a831-725683dc2e64", typeof(Analytics), typeof(Crashes));
+            Distribute.SetEnabledAsync(true);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
             Xamarin.Forms.Forms.Init(this, bundle);
-
             dbService = new DatabaseService();
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
-
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            pager = FindViewById<ViewPager>(Resource.Id.pager);
-            var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
-
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-                var view = i.Inflate(Resource.Layout.person, v, false);
-                firstView = view;
-
-                var item1 = view.FindViewById<ImageView>(Resource.Id.item1);
-                item1.Click += Item1_Click;
-
-                var item2 = view.FindViewById<ImageView>(Resource.Id.item2);
-                item2.Click += Item2_Click;
-
-                var item3 = view.FindViewById<ImageView>(Resource.Id.item3);
-                item3.Click += Item3_Click;
-
-                var item4 = view.FindViewById<ImageView>(Resource.Id.item4);
-                item4.Click += Item4_Click;
-
-                var item5 = view.FindViewById<ImageView>(Resource.Id.item5);
-                item5.Click += Item5_Click;
-
-                var item6 = view.FindViewById<ImageView>(Resource.Id.item6);
-                item6.Click += Item6_Click;
-
-                prices = view.FindViewById<EditText>(Resource.Id.prices);
-                finalPrice = view.FindViewById<TextView>(Resource.Id.finalPrice);
-
-                var clear = view.FindViewById<Button>(Resource.Id.clear);
-                clear.Click += Clear_Click;
-
-                var save = view.FindViewById<Button>(Resource.Id.save);
-                save.Click += Save_Click;
-
-                var sendBill = view.FindViewById<Button>(Resource.Id.sendBill);
-                sendBill.Click += SendBill_Click;
-
-                var delete = view.FindViewById<Button>(Resource.Id.deleteButton);
-                delete.Click += Delete_Click;
-
-                return view;
-            });
-
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
-                secondView = view;
-
-                var newButton = view.FindViewById<ImageView>(Resource.Id.newButton);
-                newButton.Click += NewButton_Click;
-
-                var listView = view.FindViewById<ListView>(Resource.Id.listView);
-                listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-
-                return view;
-            });
-
-            pager.Adapter = adaptor;
-            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
-
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Person"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "People"));
-            pager.SetCurrentItem(1, true);
+            dbService.DeleteDatabase();
+            RefreshViews();
         }
+
+        private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
+        {
+            e.Handled = false;
+            if (e.ActionId == ImeAction.Send)
+            {
+                InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
+
+                inputManager.HideSoftInputFromWindow(this.CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+                e.Handled = true;
+            }
+        }
+
+        public void Fill_Spinner_Contacts(View view, Spinner spinner)
+        {
+            DatabaseService dbService = new DatabaseService();
+            var people = dbService.GetAllPersons();
+            var contacts = from contact in people
+                           select contact.Name;
+            var contactNames = contacts.ToList();
+            contactNames.Add("<Create New Contact>");
+            var adapter = new ArrayAdapter<string>(this, Resource.Layout.spinner_item, contactNames);
+            spinner.Adapter = adapter;
+        }
+
+        private void emailEdit_FocusChange(object sender, EventArgs e)
+        {
+            var what = switcher.IndexOfChild(firstView);
+            debtLayout.Visibility = ViewStates.Visible;
+            var sendBill = FindViewById<Button>(Resource.Id.button_finish);
+            sendBill.Click += SendBill_Click;
+
+        }
+
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+                Spinner spinner = (Spinner)sender;
+                if (spinner.GetItemAtPosition(e.Position).ToString() == "<Create New Contact>")
+                {
+                    switcher.ShowNext();
+                    firstView.FindViewById<EditText>(Resource.Id.editText_name).Text = "";
+                    firstView.FindViewById<EditText>(Resource.Id.editText_mail).Text = "";
+                }
+                else
+                {
+                    debtLayout.Visibility = ViewStates.Visible;
+                    var sendBill = FindViewById<Button>(Resource.Id.button_finish);
+                    sendBill.Click += SendBill_Click;
+                }
+        }
+
+        private int GetIndex(Spinner spinner, String myString)
+        {
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (spinner.GetItemAtPosition(i).ToString().Equals(myString))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private void OnClick_Add_Contact(object sender, EventArgs e)
+        {
+            Save_Click(sender, e);
+        }
+
 
         private void Delete_Click(object sender, System.EventArgs e)
         {
@@ -114,93 +127,155 @@ namespace debt_app
         {
             var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
             listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            Fill_Spinner_Contacts(firstView, spinner);
         }
 
         private void SendBill_Click(object sender, System.EventArgs e)
         {
+<<<<<<< HEAD
             var email = curPerson.Name + "@mail.com";
             var body = "&body=Send%20money";
 
             Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + email + body));
+=======
+            var numberEdit = FindViewById<EditText>(Resource.Id.editText_value);
+            Save_Click(sender, e);
+            //Xamarin.Forms.Device.OpenUri(new System.Uri("mailto:" + curPerson.Email));
+>>>>>>> green-theme
         }
 
         public void UpdatePerson()
         {
-            var view = firstView;
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            spinner.SetSelection(GetIndex(spinner, curPerson.Name));
 
-            var name = view.FindViewById<EditText>(Resource.Id.name);
-            name.Text = curPerson.Name;
+            
+            //var name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
+            //name.Text = curPerson.Name;
+        }
 
-            prices.Text = curPerson.Items;
+        public void RefreshViews()
+        {
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            pager = FindViewById<ViewPager>(Resource.Id.pager);
+            var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+                var view = firstView = i.Inflate(Resource.Layout.add_debt, v, false);
+
+                switcher = view.FindViewById<ViewSwitcher>(Resource.Id.viewSwitcher_contacts);
+
+                var emailEdit = view.FindViewById<EditText>(Resource.Id.editText_mail);
+                emailEdit.FocusChange += new EventHandler<View.FocusChangeEventArgs>(emailEdit_FocusChange);
+
+                var numberEdit = view.FindViewById<EditText>(Resource.Id.editText_value);
+                numberEdit.EditorAction += HandleEditorAction;
+
+                debtLayout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout_debt);
+
+                var spinner = view.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+                Fill_Spinner_Contacts(view, spinner);
+                spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+                return view;
+            });
+
+            adaptor.AddFragmentView((i, v, b) =>
+            {
+
+                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
+                secondView = view;
+
+                var listView = view.FindViewById<ListView>(Resource.Id.listView);
+                listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+
+                return view;
+            });
+
+            pager.Adapter = adaptor;
+            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
+
+            ActionBar.RemoveAllTabs();
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
+            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
+            pager.SetCurrentItem(1, true);
         }
 
         private void Save_Click(object sender, System.EventArgs e)
         {
-            var name = firstView.FindViewById<EditText>(Resource.Id.name);
-            curPerson.Name = name.Text;
-
-            if (curPerson.Id == 0)
-                dbService.AddPerson(curPerson);
+            var people = dbService.GetAllPersons();
+            var spinner = firstView.FindViewById<Spinner>(Resource.Id.spinner_contacts);
+            string name;
+            string email = "abc123@gmail.com";
+            EditText editText_name = firstView.FindViewById<EditText>(Resource.Id.editText_name);
+            if (editText_name.Text == "")
+            {
+                name = spinner.SelectedItem.ToString();
+                if (name == "" || name == "<Create New Contact>")
+                {
+                    Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                    Android.App.AlertDialog alert = dialog.Create();
+                    alert.SetTitle("Warning");
+                    alert.SetMessage("You entered incorrect name");
+                    alert.Show();
+                    return;
+                }
+            }
             else
+            {
+                name = editText_name.Text;
+            }
+
+            double debt = 0.0;
+            try
+            {
+                debt = double.Parse(FindViewById<EditText>(Resource.Id.editText_value).Text);
+            }
+            catch
+            {
+                Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                Android.App.AlertDialog alert = dialog.Create();
+                alert.SetTitle("Warning");
+                alert.SetMessage("You entered incorrect debt amount");
+                alert.Show();
+                return;
+            }
+
+            curPerson.Name = name;
+            curPerson.Email = email;
+            if (firstView.FindViewById<Switch>(Resource.Id.switch_debt).Checked==true)
+            {
+                curPerson.Debt -= debt;
+            }
+            else
+            {
+                curPerson.Debt += debt;
+            }
+            
+
+
+            //var contacts = (from contact in people
+            //                where contact.Name == curPerson.Name
+            //               select contact).FirstOrDefault;
+
+            if (!people.Any(s => s.Name == curPerson.Name))
+            {
+                dbService.AddPerson(curPerson);
+            }
+
+            else
+            {
                 dbService.UpdatePerson(curPerson);
+            }
+
 
             curPerson = new Person();
             UpdatePeople();
             UpdatePerson();
             pager.SetCurrentItem(1, true);
-        }
-
-        private void Clear_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items = "";
-            update_text();
-        }
-
-        private void NewButton_Click(object sender, System.EventArgs e)
-        {
-            pager.SetCurrentItem(0, true);
-        }
-
-        private void Item1_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "cucumber ";
-            update_text();
-        }
-
-        private void Item2_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "apple ";
-            update_text();
-        }
-
-        private void Item3_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "gum ";
-            update_text();
-        }
-
-        private void Item4_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "beer ";
-            update_text();
-        }
-
-        private void Item5_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "cigarettes ";
-            update_text();
-        }
-
-        private void Item6_Click(object sender, System.EventArgs e)
-        {
-            curPerson.Items += "vodka ";
-            update_text();
-        }
-
-        private void update_text()
-        {
-            finalPrice.Text = "Price: " + Person.CalcDebt(curPerson.Items).ToString();
-            prices.Text = curPerson.Items;
+            RefreshViews();
+            
         }
     }
 }

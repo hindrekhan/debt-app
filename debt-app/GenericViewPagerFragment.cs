@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace debt_app
 {
-    public class GenericViewPagerFragment:Android.Support.V4.App.Fragment
+    public class GenericViewPagerFragment : Android.Support.V4.App.Fragment
     {
         private Func<LayoutInflater, ViewGroup, Bundle, View> _view;
         public GenericViewPagerFragment(Func<LayoutInflater,ViewGroup,Bundle,View> view)

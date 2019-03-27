@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="AndroidPager.AndroidPager" android:versionCode="1" android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="DebtApp" android:versionCode="1" android:versionName="1.2">
 	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="27" />
-	<application android:label="AndroidPager"></application>
+	<application android:theme="@style/AppTheme" android:label="Debt App"></application>
 </manifest>

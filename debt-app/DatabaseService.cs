@@ -22,7 +22,7 @@ namespace debt_app
         {
             string dbPath = Path.Combine(System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.Personal),
-                "mydatabase.db1");
+                "debtDatabase5.db1");
 
             db = new SQLiteConnection(dbPath);
         }
@@ -30,6 +30,11 @@ namespace debt_app
         public void CreateDatabase()
         {
             db.CreateTable<Person>();
+        }
+
+        public void DeleteDatabase()
+        {
+            db.DeleteAll<Person>();
         }
 
         public void AddPerson(Person Person)
@@ -46,13 +51,6 @@ namespace debt_app
         {
             db.CreateTable<Person>();
 
-            if (db.Table<Person>().Count() == 0)
-            {
-                var newPerson = new Person();
-                newPerson.Name = "jim";
-                newPerson.Items = "cucumber";
-                db.Insert(newPerson);
-            }
         }
 
         public List<Person> GetAllPersons()
