@@ -16,19 +16,23 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using Android.Support.V7.App;
+using Android.Support.Design.Widget;
+using Android.Animation;
 
 namespace debt_app
 {
     [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
-        ViewPager pager;
         public DatabaseService dbService;
-        public Person curPerson = new Person();
-        public View firstView;
-        public View secondView;
-        ViewSwitcher switcher;
-        RelativeLayout debtLayout;
+        private static bool isFabOpen;
+        private FloatingActionButton fabDebt;
+        private FloatingActionButton fabContact;
+        private FloatingActionButton fabMain;
+        private View bgFabMenu;
+        //public Person curPerson = new Person();
+        //public View firstView;
+        //public View secondView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -39,12 +43,106 @@ namespace debt_app
             Distribute.SetEnabledAsync(true);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            Xamarin.Forms.Forms.Init(this, bundle);
+
+            fabDebt = FindViewById<FloatingActionButton>(Resource.Id.fab_debt);
+            fabContact = FindViewById<FloatingActionButton>(Resource.Id.fab_contact);
+            fabMain = FindViewById<FloatingActionButton>(Resource.Id.fab_main);
+            bgFabMenu = FindViewById<View>(Resource.Id.bg_fab_menu);
+
+            fabMain.Click += (o, e) =>
+            {
+                if (!isFabOpen)
+                {
+                    ShowFabMenu();
+                }
+                else
+                {
+                    CloseFabMenu();
+                }
+            };
+
+            fabDebt.Click += (o, e) =>
+            {
+                CloseFabMenu();
+                Toast.MakeText(this, "You are now in debt 9,000,000€ to the Russian Mafia", ToastLength.Short).Show();
+            };
+            fabContact.Click += (o, e) =>
+            {
+                CloseFabMenu();
+                Toast.MakeText(this, "The Russian Mafia added you on Facebook", ToastLength.Short).Show();
+            };
+            bgFabMenu.Click += (o, e) => CloseFabMenu();
+
             dbService = new DatabaseService();
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
             dbService.DeleteDatabase();
             
+        }
+
+        private void ShowFabMenu()
+        {
+            isFabOpen = true;
+            fabDebt.Visibility = ViewStates.Visible;
+            fabContact.Visibility = ViewStates.Visible;
+            bgFabMenu.Visibility = ViewStates.Visible;
+
+            fabMain.Animate().Rotation(135f);
+            bgFabMenu.Animate().Alpha(1f);
+            fabDebt.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_100))
+                .Rotation(0f);
+            fabContact.Animate().TranslationY(-Resources.GetDimension(Resource.Dimension.standard_55))
+                .Rotation(0f);
+        }
+
+        private void CloseFabMenu()
+        {
+            isFabOpen = false;
+
+            fabMain.Animate().Rotation(0f);
+            bgFabMenu.Animate().Alpha(0f);
+            fabDebt.Animate()
+                .TranslationY(0f)
+                .Rotation(90f);
+            fabContact.Animate()
+                .TranslationY(0f)
+                .Rotation(90f).SetListener(new FabAnimatorListener(bgFabMenu, fabContact, fabDebt));
+        }
+
+        private class FabAnimatorListener : Java.Lang.Object, Animator.IAnimatorListener
+        {
+            View[] viewsToHide;
+
+            public FabAnimatorListener(params View[] viewsToHide)
+            {
+                this.viewsToHide = viewsToHide;
+            }
+
+            public void OnAnimationCancel(Animator animation)
+            {
+                
+            }
+
+            public void OnAnimationEnd(Animator animation)
+            {
+                if (!isFabOpen)
+                {
+                    foreach (var view in viewsToHide)
+                    {
+                        view.Visibility = ViewStates.Gone;
+                    }
+                }
+            }
+
+            public void OnAnimationRepeat(Animator animation)
+            {
+                
+            }
+
+            public void OnAnimationStart(Animator animation)
+            {
+                
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -63,11 +161,8 @@ namespace debt_app
             return base.OnOptionsItemSelected(item);
         }
 
-
-
-
-            private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
-        {
+        private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
+            {
             e.Handled = false;
             if (e.ActionId == ImeAction.Send)
             {
@@ -78,20 +173,10 @@ namespace debt_app
             }
         }
 
-        private void Delete_Click(object sender, System.EventArgs e)
-        {
-            dbService.RemovePerson(curPerson);
-            pager.SetCurrentItem(1, true);
-            UpdatePeople();
-        }
-
-        public void UpdatePeople()
-        {
-            var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
-            listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-        }
-
-
-        
+        //public void UpdatePeople()
+        //{
+        //    var listView = secondView.FindViewById<ListView>(Resource.Id.listView);
+        //    listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
+        //}
     }
 }

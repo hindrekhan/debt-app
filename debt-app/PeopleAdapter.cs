@@ -41,30 +41,30 @@ namespace debt_app
         {
             View view = convertView;
 
-            if (view == null)
-            {
+            //if (view == null)
+            //{
                 
-                    if ( items[position].Debt < 0)
-                    {
+            //        if ( items[position].Debt < 0)
+            //        {
 
-                    view = context.LayoutInflater.Inflate(Resource.Layout.list_item2, null);
-                    }
+            //        view = context.LayoutInflater.Inflate(Resource.Layout.list_item2, null);
+            //        }
 
 
-                view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
-            }
+            //    view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
+            //}
 
-            var name = view.FindViewById<TextView>(Resource.Id.txt_name);
-            var debt = view.FindViewById<TextView>(Resource.Id.debt);
-            var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
+            //var name = view.FindViewById<TextView>(Resource.Id.txt_name);
+            //var debt = view.FindViewById<TextView>(Resource.Id.debt);
+            //var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
             
-            name.Text = items[position].Name;
-            debt.Text = items[position].Debt.ToString() + "€";
-            //debt.Text = Person.CalcDebt(items[position].Items).ToString() + "€";
+            //name.Text = items[position].Name;
+            //debt.Text = items[position].Debt.ToString() + "€";
+            ////debt.Text = Person.CalcDebt(items[position].Items).ToString() + "€";
 
-            layout.Tag = position;
+            //layout.Tag = position;
 
-            return view;
+           return view;
         }
     }
 }
