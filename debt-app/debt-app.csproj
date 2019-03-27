@@ -156,11 +156,6 @@
     <AndroidResource Include="Resources\layout\Main.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\person.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\item1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -192,11 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\add_debt.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\spinner_item.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

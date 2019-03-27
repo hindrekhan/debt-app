@@ -77,7 +77,6 @@ namespace debt_app
             var people = context.dbService.GetAllPersons();
 
             context.curPerson = people[pos];
-            context.UpdatePerson();
 
             pager.SetCurrentItem(0, true);
         }
