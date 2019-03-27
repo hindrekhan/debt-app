@@ -63,22 +63,8 @@ namespace debt_app
             //debt.Text = Person.CalcDebt(items[position].Items).ToString() + "€";
 
             layout.Tag = position;
-            layout.Click += Layout_Click;
 
             return view;
-        }
-
-        private void Layout_Click(object sender, EventArgs e)
-        {
-            var layout = (RelativeLayout)sender;
-            var pos = (int)layout.Tag;
-            
-            var pager = context.FindViewById<ViewPager>(Resource.Id.pager);
-            var people = context.dbService.GetAllPersons();
-
-            context.curPerson = people[pos];
-
-            pager.SetCurrentItem(0, true);
         }
     }
 }

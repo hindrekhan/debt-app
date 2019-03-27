@@ -15,11 +15,12 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
+using Android.Support.V7.App;
 
 namespace debt_app
 {
     [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    public class MainActivity : FragmentActivity
+    public class MainActivity : AppCompatActivity
     {
         ViewPager pager;
         public DatabaseService dbService;
@@ -43,7 +44,6 @@ namespace debt_app
             dbService.CreateDatabase();
             dbService.CreateTableWithData();
             dbService.DeleteDatabase();
-            RefreshViews();
             
         }
 
@@ -92,35 +92,6 @@ namespace debt_app
         }
 
 
-        public void RefreshViews()
-        {
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            pager = FindViewById<ViewPager>(Resource.Id.pager);
-            var adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-                var view = firstView = i.Inflate(Resource.Layout.add_debt, v, false);
-                return view;
-            });
-
-            adaptor.AddFragmentView((i, v, b) =>
-            {
-
-                var view = i.Inflate(Resource.Layout.listview_layout, v, false);
-                secondView = view;
-
-                var listView = view.FindViewById<ListView>(Resource.Id.listView);
-                listView.Adapter = new PeopleAdapter(this, dbService.GetAllPersons());
-                return view;
-            });
-
-            pager.Adapter = adaptor;
-            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
-
-            ActionBar.RemoveAllTabs();
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Add Debt"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "Contacts"));
-            pager.SetCurrentItem(1, true);
-        }
+        
     }
 }
