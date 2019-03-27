@@ -9,7 +9,7 @@
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:background="#118504"
+		android:background="#393737"
 		android:minWidth="25px"
 		android:minHeight="25px">
 		<Switch
