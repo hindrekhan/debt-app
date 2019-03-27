@@ -12,11 +12,6 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/relativeLayout1"
 		android:background="#F15B3A">
-		<ImageView
-			android:src="@drawable/user2"
-			android:layout_width="50dp"
-			android:layout_height="50dp"
-			android:id="@+id/imageView1" />
 		<TextView
 			android:text="Text"
 			android:textAppearance="?android:attr/textAppearanceLarge"

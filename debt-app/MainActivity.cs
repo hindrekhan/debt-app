@@ -44,9 +44,29 @@ namespace debt_app
             dbService.CreateTableWithData();
             dbService.DeleteDatabase();
             RefreshViews();
+            
         }
 
-        private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.AddDebt)
+            {
+                StartActivity(typeof(AddDebtActivity));
+                Toast.MakeText(this, "Write your note and press the button again.", ToastLength.Short).Show();
+                return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
+
+
+
+            private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
         {
             e.Handled = false;
             if (e.ActionId == ImeAction.Send)
