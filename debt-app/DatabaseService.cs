@@ -22,7 +22,7 @@ namespace debt_app
         {
             string dbPath = Path.Combine(System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.Personal),
-                "debtDatabase5.db1");
+                "debtDB2.db1");
 
             db = new SQLiteConnection(dbPath);
         }

@@ -51,6 +51,9 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,6 +67,7 @@
     <Compile Include="DatabaseService.cs" />
     <Compile Include="GenericFragmentPagerAdaptor.cs" />
     <Compile Include="GenericViewPagerFragment.cs" />
+    <Compile Include="HelpActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PeopleAdapter.cs" />
     <Compile Include="Person.cs" />
@@ -143,9 +147,6 @@
     <AndroidResource Include="Resources\layout\list_item.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\listview_layout.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
   </ItemGroup>
   <ItemGroup>
@@ -166,9 +167,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\list_item2.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -184,6 +182,24 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\add_contact.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\spinner_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\round_help_outline_24.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\help.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_popup.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

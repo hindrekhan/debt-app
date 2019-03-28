@@ -18,6 +18,7 @@ using Microsoft.AppCenter.Distribute;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Animation;
+using System.IO;
 
 namespace debt_app
 {
@@ -42,7 +43,18 @@ namespace debt_app
             Distribute.SetEnabledAsync(true);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
+            if (!File.Exists(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.Personal),
+                "debtDB2.db1")))
+            {
+                var db = new DatabaseService();
+                db.CreateDatabase();
+            }
+            else
+            {
+                LoadListView();
+            }
+            
             fabDebt = FindViewById<FloatingActionButton>(Resource.Id.fab_debt);
             fabContact = FindViewById<FloatingActionButton>(Resource.Id.fab_contact);
             fabMain = FindViewById<FloatingActionButton>(Resource.Id.fab_main);
@@ -63,16 +75,64 @@ namespace debt_app
             fabDebt.Click += (o, e) =>
             {
                 CloseFabMenu();
-                Toast.MakeText(this, "You are now in debt 9,000,000€ to the Russian Mafia", ToastLength.Short).Show();
                 StartActivity(typeof(AddDebtActivity));
             };
             fabContact.Click += (o, e) =>
             {
                 CloseFabMenu();
-                Toast.MakeText(this, "The Russian Mafia added you on Facebook", ToastLength.Short).Show();
                 StartActivity(typeof(AddContactActivity));
             };
             bgFabMenu.Click += (o, e) => CloseFabMenu();
+        }
+
+        public void LoadListView()
+        {
+            var dbService = new DatabaseService();
+            var listView = FindViewById<ListView>(Resource.Id.listView1);
+            var people = dbService.GetAllPersons();
+            try
+            {
+                listView.Adapter = new PeopleAdapter(this, RemoveZeros(people));
+                listView.ItemClick += ListView_ItemClick;
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
+        private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var layout = (View)sender;
+            var pos = (int)layout.Tag;
+            var dbService = new DatabaseService();
+
+            var people = dbService.GetAllPersons();
+            var curPerson = people[pos];
+
+            var listView = FindViewById<ListView>(Resource.Id.listView1);
+            var menu = new PopupMenu(this, listView.GetChildAt(e.Position));
+            menu.Inflate(Resource.Menu.menu_popup);
+            menu.MenuItemClick += (s, a) =>
+            {
+                switch (a.Item.ItemId)
+                {
+                    case Resource.Id.pop_button1:
+                        dbService.RemovePerson(curPerson);
+                        LoadListView();
+                        break;
+
+                }
+            };
+            menu.Show();
+        }
+
+        private List<Person> RemoveZeros(List<Person> people)
+        {
+            var zeros = (from contact in people
+                         where contact.Debt != 0
+                         select contact).ToList();
+            return zeros;
         }
 
         private void ShowFabMenu()
@@ -139,8 +199,7 @@ namespace debt_app
         {
             if (item.ItemId == Resource.Id.AddDebt)
             {
-                StartActivity(typeof(AddDebtActivity));
-                Toast.MakeText(this, "Write your note and press the button again.", ToastLength.Short).Show();
+                StartActivity(typeof(HelpActivity));
                 return true;
             }
             return base.OnOptionsItemSelected(item);

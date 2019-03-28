@@ -20,7 +20,7 @@
 		android:layout_marginBottom="30dp"
 		android:id="@+id/editText_email" />
 	 <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_addaccount"
+        android:id="@+id/btn_addContact"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:drawableStart="@drawable/round_account_circle_24"
@@ -30,5 +30,6 @@
 		android:drawableTint="#fff"
 		android:stateListAnimator="@null"
 		android:textColor="#fff"
+		android:onClick="addContactToDatabase"
         android:backgroundTint="#404040" />
 </LinearLayout>

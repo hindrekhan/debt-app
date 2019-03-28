@@ -40,31 +40,22 @@ namespace debt_app
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view = convertView;
+            if (view == null)
+            {
+                view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
+            }
 
-            //if (view == null)
-            //{
-                
-            //        if ( items[position].Debt < 0)
-            //        {
+            var name = view.FindViewById<TextView>(Resource.Id.txt_name);
+            var debt = view.FindViewById<TextView>(Resource.Id.debt);
+            var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
 
-            //        view = context.LayoutInflater.Inflate(Resource.Layout.list_item2, null);
-            //        }
+            name.Text = items[position].Name;
+            debt.Text = items[position].Debt.ToString() + "€";
+            view.Tag = position;
 
 
-            //    view = context.LayoutInflater.Inflate(Resource.Layout.list_item, null);
-            //}
-
-            //var name = view.FindViewById<TextView>(Resource.Id.txt_name);
-            //var debt = view.FindViewById<TextView>(Resource.Id.debt);
-            //var layout = view.FindViewById<RelativeLayout>(Resource.Id.relativeLayout1);
-            
-            //name.Text = items[position].Name;
-            //debt.Text = items[position].Debt.ToString() + "€";
-            ////debt.Text = Person.CalcDebt(items[position].Items).ToString() + "€";
-
-            //layout.Tag = position;
-
-           return view;
+            return view;
         }
+
     }
 }

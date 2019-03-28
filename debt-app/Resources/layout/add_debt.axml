@@ -28,10 +28,38 @@
 			android:layout_below="@id/switch_debt"
 			android:id="@+id/text_TheirDebt" />
 	</RelativeLayout>
+	<TextView
+		android:text="Choose contact"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:id="@+id/text_info_contact" />
 	<Spinner
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:minHeight="48dp"
+		android:layout_margin="10dp"
 		android:id="@+id/spinner1" />
-	
+	<EditText
+		android:inputType="numberDecimal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:gravity="left"
+		android:textSize="70sp"
+		android:id="@+id/editText_debt" />
+	<android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_addDebt"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:drawableStart="@drawable/currency_eur"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Add Debt To Database"
+		android:drawableTint="#fff"
+		android:stateListAnimator="@null"
+		android:textColor="#fff"
+		android:onClick="addDebtToDatabase"
+        android:backgroundTint="#404040" />
 	
 </LinearLayout>

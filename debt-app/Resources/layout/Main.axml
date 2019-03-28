@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<TextView
-		android:text="jou mt"
+<android.support.design.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ListView
+		android:minWidth="25px"
+		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:minWidth="250px"
-		android:minHeight="250px"
-		android:id="@+id/textView1"
-		android:textSize="45dp"
-		android:gravity="center" />
+		android:id="@+id/listView1" />
 	<View
 		android:id="@+id/bg_fab_menu"
 		android:layout_width="match_parent"
@@ -27,7 +26,7 @@
 		android:layout_margin="@dimen/standard_23"
 		android:visibility="gone"
 		android:rotation="90"
-        app:fabSize="mini" 
+		app:fabSize="mini"
 		app:srcCompat="@drawable/round_account_circle_24"/>
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/fab_debt"
@@ -37,7 +36,7 @@
 		android:layout_margin="@dimen/standard_23"
 		android:visibility="gone"
 		android:rotation="90"
-        app:fabSize="mini" 
+		app:fabSize="mini"
 		app:srcCompat="@drawable/currency_eur"/>
 	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/fab_main"
@@ -47,9 +46,8 @@
 		android:scaleType="fitXY"
 		android:layout_margin="@dimen/fab_margin"
 		android:padding="0dp"
-        app:fabSize="normal" 
+		app:fabSize="normal"
 		app:borderWidth="0dp"
-		app:useCompatPadding="true" 
+		app:useCompatPadding="true"
 		app:srcCompat="@drawable/round_add_24"/>
-
 </android.support.design.widget.CoordinatorLayout>

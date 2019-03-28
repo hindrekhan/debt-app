@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<TextView
+		android:text="Usage Guide"
+		android:layout_width="fill_parent"
+		android:layout_margin="10dp"
+		android:layout_height="wrap_content"
+		android:textSize="24sp"
+		android:textColor="@color/sa_green"
+		android:id="@+id/textView1"
+		android:gravity="center" />
+	<TextView
+		android:text="1. Make a Contact using the Floating Action Button"
+		android:layout_width="fill_parent"
+		android:layout_margin="5dp"
+		android:layout_height="wrap_content"
+		android:textSize="24sp"
+		android:id="@+id/textView2" />
+	<TextView
+		android:text="2. Add Debt to a Contact using Floating Action Button"
+		android:layout_width="fill_parent"
+		android:layout_margin="5dp"
+		android:layout_height="wrap_content"
+		android:textSize="24sp"
+		android:id="@+id/textView3" />
+	<TextView
+		android:text="3. View Debt in Main View"
+		android:layout_width="fill_parent"
+		android:layout_margin="5dp"
+		android:layout_height="wrap_content"
+		android:textSize="24sp"
+		android:id="@+id/textView4" />
+	<TextView
+		android:text="Debt App was developed by:
+		Tom Kristian Abel 
+		Hindrek Hannus 
+		Jasper Noorkõiv
+		
+
+		TA-17E 2019"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:textSize="18sp"
+		android:textColor="@android:color/holo_red_dark"
+		android:id="@+id/textView5"
+		android:gravity="center|bottom"  />
+
+</LinearLayout>

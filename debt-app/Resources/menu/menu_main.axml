@@ -3,6 +3,6 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
        android:id="@+id/AddDebt"
-       android:icon="@drawable/round_add_24"
+       android:icon="@drawable/round_help_outline_24"
           app:showAsAction="ifRoom"/>
 </menu>
