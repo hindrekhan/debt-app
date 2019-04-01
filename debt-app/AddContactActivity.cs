@@ -30,18 +30,33 @@ namespace debt_app
         }
         private void addContactToDatabase()
         {
-            Toast.MakeText(this, "Contact saved", ToastLength.Short).Show();
             Person curPerson = new Person();
             curPerson.Name = FindViewById<EditText>(Resource.Id.editText_name).Text;
             curPerson.Email = FindViewById<EditText>(Resource.Id.editText_email).Text;
             curPerson.Debt = 0;
             // Prevent double names for Contacts
-            if (dbService.GetAllPersons().Any(cus => cus.Name == curPerson.Name) == true)
+            var people = dbService.GetAllPersons();
+            bool has = people.Any(cus => cus.Name.Trim() == curPerson.Name.Trim());
+            if (has == true)
             {
                 Toast.MakeText(this, "Error: Name exists already", ToastLength.Short).Show();
             }
-            dbService.AddPerson(curPerson);
-            StartActivity(typeof(MainActivity));
+            else
+            {
+                Toast.MakeText(this, "Contact saved", ToastLength.Short).Show();
+                dbService.AddPerson(curPerson);
+                // Get intent, because using shortcut to add contact should return to add debt activity
+                var extra = Intent.GetStringExtra("Activity");
+                if (extra == "First")
+                {
+                    StartActivity(typeof(AddDebtActivity));
+                }
+                else
+                {
+                    StartActivity(typeof(MainActivity));
+                }
+            }
+            
         }
     }
 }

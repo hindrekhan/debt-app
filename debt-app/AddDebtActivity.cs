@@ -19,6 +19,7 @@ namespace debt_app
     {
         private Spinner contactSpinner;
         private double debtAmount;
+        private Intent intent;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,10 +27,22 @@ namespace debt_app
 
             // Create your application here
             SetContentView(Resource.Layout.add_debt);
+            // spinner stuff
             contactSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
-            var debtButton = FindViewById<AppCompatButton>(Resource.Id.btn_addDebt);
             FillSpinner();
+            // debtButton stuff
+            var debtButton = FindViewById<AppCompatButton>(Resource.Id.btn_addDebt);
             debtButton.Click += delegate { addDebtToDatabase(); };
+            // add contact shortcut stuff
+            intent = new Intent(this, typeof(AddContactActivity));
+            intent.PutExtra("Activity", "First");
+            
+
+            var addContact = FindViewById<ImageButton>(Resource.Id.imageButton1);
+            addContact.Click += delegate {
+                StartActivity(intent);
+            };
+
         }
 
         private void addDebtToDatabase()
