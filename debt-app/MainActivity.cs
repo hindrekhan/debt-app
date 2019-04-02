@@ -189,32 +189,5 @@ namespace debt_app
 
             public void OnAnimationStart(Animator animation) { }
         }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            if (item.ItemId == Resource.Id.AddDebt)
-            {
-                StartActivity(typeof(HelpActivity));
-                return true;
-            }
-            return base.OnOptionsItemSelected(item);
-        }
-
-        private void HandleEditorAction(object sender, TextView.EditorActionEventArgs e)
-            {
-            e.Handled = false;
-            if (e.ActionId == ImeAction.Send)
-            {
-                InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
-
-                inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
-                e.Handled = true;
-            }
-        }
     }
 }
