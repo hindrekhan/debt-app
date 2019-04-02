@@ -66,8 +66,6 @@
     <Compile Include="AddContactActivity.cs" />
     <Compile Include="AddDebtActivity.cs" />
     <Compile Include="DatabaseService.cs" />
-    <Compile Include="GenericFragmentPagerAdaptor.cs" />
-    <Compile Include="GenericViewPagerFragment.cs" />
     <Compile Include="HelpActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PeopleAdapter.cs" />
