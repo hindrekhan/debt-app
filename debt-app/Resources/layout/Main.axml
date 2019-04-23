@@ -39,6 +39,16 @@
 		app:fabSize="mini"
 		app:srcCompat="@drawable/currency_eur"/>
 	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fab_lang"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|end"
+		android:layout_margin="@dimen/standard_23"
+		android:visibility="gone"
+		android:rotation="90"
+		app:fabSize="mini"
+		app:srcCompat="@drawable/currency_eur"/>
+	<android.support.design.widget.FloatingActionButton
 		android:id="@+id/fab_main"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

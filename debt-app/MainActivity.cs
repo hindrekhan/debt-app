@@ -19,15 +19,18 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Animation;
 using System.IO;
+using Android.Content.PM;
+using Java.Util;
 
 namespace debt_app
 {
-    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "Debt App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.Locale | ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : AppCompatActivity
     {
         private static bool isFabOpen;
         private FloatingActionButton fabDebt;
         private FloatingActionButton fabContact;
+        private FloatingActionButton fabLang;
         private FloatingActionButton fabMain;
         private View bgFabMenu;
         //public Person curPerson = new Person();
@@ -57,6 +60,7 @@ namespace debt_app
             
             fabDebt = FindViewById<FloatingActionButton>(Resource.Id.fab_debt);
             fabContact = FindViewById<FloatingActionButton>(Resource.Id.fab_contact);
+            fabLang = FindViewById<FloatingActionButton>(Resource.Id.fab_lang);
             fabMain = FindViewById<FloatingActionButton>(Resource.Id.fab_main);
             bgFabMenu = FindViewById<View>(Resource.Id.bg_fab_menu);
 
@@ -82,6 +86,16 @@ namespace debt_app
                 CloseFabMenu();
                 StartActivity(typeof(AddContactActivity));
             };
+            fabLang.Click += (o, e) =>
+            {
+                CloseFabMenu();
+
+                Locale locale = new Locale("fr");
+
+                Resources.Configuration.SetLocale(locale);
+            };
+            
+
             bgFabMenu.Click += (o, e) => CloseFabMenu();
         }
 

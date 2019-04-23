@@ -18,7 +18,7 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/switch_debt" />
 		<TextView
-			android:text="Their debt"
+			android:text="@string/their_debt"
 			android:textAllCaps="true"
 			android:textSize="16dp"
 			android:textColor="@android:color/white"

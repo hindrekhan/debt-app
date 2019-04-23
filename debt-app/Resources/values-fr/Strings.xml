@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">DebtApp</string>
+  <string name="action_note">AddDebt</string>
+  <string name="their_debt">leur dette</string>
+  <string name="choose_contact">choisir contact</string>
+  <string name="add_debt_to_db">ajouter une dette à la base de données</string>
+  <string name="no_contacts_available">Aucun contact disponible</string>
+  <string name="user_name">prénom</string>
+  <string name="user_email">email</string>
+  <string name="add_contact_to_db">ajouter un contact à la base de données</string>
+  <string name="added_debt_to_db">dette ajoutée à la base de données</string>
+  <string name="user_delete">effacer</string>
+  <string name="err_no_contact_selected">Erreur: Aucun contact sélectionné, créer un contact.</string>
+  <string name="err_no_debt_amount">Erreur: aucun montant de dette entré</string>
+  <string name="contact_saved">contact enregistré</string>
+</resources>

@@ -3,4 +3,16 @@
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">DebtApp</string>
     <string name="action_note">AddDebt</string>
+  <string name="their_debt">Their Debt</string>
+  <string name="choose_contact">Choose contact</string>
+  <string name="add_debt_to_db">Add debt to database</string>
+  <string name="no_contacts_available">No contacts available</string>
+  <string name="user_name">name</string>
+  <string name="user_email">email</string>
+  <string name="add_contact_to_db">Add contact to database</string>
+  <string name="added_debt_to_db">Added debt to database</string>
+  <string name="user_delete">Delete</string>
+  <string name="err_no_contact_selected">Error: No contact selected, create contact</string>
+  <string name="err_no_debt_amount">Error: No debt amount entered</string>
+  <string name="contact_saved">Contact saved</string>
 </resources>
