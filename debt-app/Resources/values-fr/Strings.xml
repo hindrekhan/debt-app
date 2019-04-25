@@ -16,4 +16,7 @@
   <string name="err_no_debt_amount">Erreur: aucun montant de dette entré</string>
   <string name="contact_saved">contact enregistré</string>
   <string name="err_name_exists">Erreur: le nom existe déjà</string>
+  <string name="activity_main">Application de la dette</string>
+  <string name="activity_add_contact">ajouter le contact</string>
+  <string name="activity_add_debt">ajouter de la dette</string>
 </resources>

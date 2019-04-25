@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace debt_app
 {
-    [Activity(Label = "Activity1")]
+    [Activity(Label = "@string/activity_add_contact")]
     public class AddContactActivity : Activity
     {
         DatabaseService dbService = new DatabaseService();

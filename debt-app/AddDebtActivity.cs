@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace debt_app
 {
-    [Activity(Label = "AddDebtActivity")]
+    [Activity(Label = "@string/activity_add_debt")]
     public class AddDebtActivity : AppCompatActivity
     {
         private Spinner contactSpinner;

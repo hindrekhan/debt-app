@@ -16,4 +16,7 @@
   <string name="err_no_debt_amount">Error: No debt amount entered</string>
   <string name="contact_saved">Contact saved</string>
   <string name="err_name_exists">Error: Name exists already</string>
+  <string name="activity_main">Debt App</string>
+  <string name="activity_add_contact">Add contact</string>
+  <string name="activity_add_debt">Add Debt</string>
 </resources>

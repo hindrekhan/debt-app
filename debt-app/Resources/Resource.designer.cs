@@ -4231,6 +4231,15 @@ namespace debt_app
 			// aapt resource value: 0x7f0a0051
 			public const int action_note = 2131361873;
 			
+			// aapt resource value: 0x7f0a0060
+			public const int activity_add_contact = 2131361888;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int activity_add_debt = 2131361889;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int activity_main = 2131361887;
+			
 			// aapt resource value: 0x7f0a0058
 			public const int add_contact_to_db = 2131361880;
 			
