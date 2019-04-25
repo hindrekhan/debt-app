@@ -29,7 +29,7 @@
 			android:id="@+id/text_TheirDebt" />
 	</RelativeLayout>
 	<TextView
-		android:text="Choose contact"
+		android:text="@string/choose_contact"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_margin="10dp"
@@ -76,7 +76,7 @@
         android:drawableStart="@drawable/currency_eur"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="Add Debt To Database"
+        android:text="@string/add_debt_to_db"
 		android:drawableTint="#fff"
 		android:stateListAnimator="@null"
 		android:textColor="#fff"

@@ -49,13 +49,13 @@ namespace debt_app
         {
             DatabaseService dbService = new DatabaseService();
             Switch debtSwitch = FindViewById<Switch>(Resource.Id.switch_debt);
-            if (contactSpinner.SelectedItem.ToString() == "No Contacts Available" || contactSpinner.SelectedItem.ToString() == null)
+            if (contactSpinner.SelectedItem.ToString() == Resources.GetText(Resource.String.no_contacts_available) || contactSpinner.SelectedItem.ToString() == null)
             {
-                Toast.MakeText(this, "Error: No contact selected, create contact", ToastLength.Short).Show();
+                Toast.MakeText(this, Resources.GetText(Resource.String.err_no_contact_selected), ToastLength.Short).Show();
             }
             else if (FindViewById<EditText>(Resource.Id.editText_debt).Text == "")
             {
-                Toast.MakeText(this, "Error: No debt amount entered", ToastLength.Short).Show();
+                Toast.MakeText(this, Resources.GetText(Resource.String.err_no_debt_amount), ToastLength.Short).Show();
             }
             else
             {
@@ -82,7 +82,7 @@ namespace debt_app
                 }
                 dbService.UpdatePerson(curPerson);
                 people = dbService.GetAllPersons();
-                Toast.MakeText(this, "Debt added to database", ToastLength.Short).Show();
+                Toast.MakeText(this, Resources.GetText(Resource.String.added_debt_to_db), ToastLength.Short).Show();
                 StartActivity(typeof(MainActivity));
             }
         }
@@ -97,7 +97,7 @@ namespace debt_app
             
             if (people.Count == 0)
             {
-                contactNames.Add("No Contacts Available");
+                contactNames.Add(Resources.GetText(Resource.String.no_contacts_available));
                 contactSpinner.Enabled = false;
             }
             else

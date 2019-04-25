@@ -4312,6 +4312,9 @@ namespace debt_app
 			// aapt resource value: 0x7f0a005d
 			public const int contact_saved = 2131361885;
 			
+			// aapt resource value: 0x7f0a005e
+			public const int err_name_exists = 2131361886;
+			
 			// aapt resource value: 0x7f0a005b
 			public const int err_no_contact_selected = 2131361883;
 			

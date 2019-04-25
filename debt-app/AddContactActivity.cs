@@ -39,11 +39,11 @@ namespace debt_app
             bool has = people.Any(cus => cus.Name.Trim() == curPerson.Name.Trim());
             if (has == true)
             {
-                Toast.MakeText(this, "Error: Name exists already", ToastLength.Short).Show();
+                Toast.MakeText(this, Resources.GetText(Resource.String.err_name_exists), ToastLength.Short).Show();
             }
             else
             {
-                Toast.MakeText(this, "Contact saved", ToastLength.Short).Show();
+                Toast.MakeText(this, Resources.GetText(Resource.String.contact_saved), ToastLength.Short).Show();
                 dbService.AddPerson(curPerson);
                 // Get intent, because using shortcut to add contact should return to add debt activity
                 var extra = Intent.GetStringExtra("Activity");
